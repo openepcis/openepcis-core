@@ -1,0 +1,43 @@
+{
+  "index_patterns": [
+    "epc-*"
+  ],
+  "settings": {
+    "number_of_shards": "5",
+    "number_of_replicas": "1"
+  },
+  "mappings": {
+    "numeric_detection": true,
+    "date_detection": true,
+    "dynamic_templates": [
+      {
+        "strings_as_keywords": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "type": "keyword"
+          }
+        }
+      }
+    ],
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "asCaptured": {
+        "type": "keyword",
+        "store": true
+      },
+      "canonicalDL": {
+        "type": "keyword",
+        "store": true
+      },
+      "asURN": {
+        "type": "keyword",
+        "store": true
+      }
+    }
+  },
+  "aliases": {
+    "epc": {}
+  }
+}

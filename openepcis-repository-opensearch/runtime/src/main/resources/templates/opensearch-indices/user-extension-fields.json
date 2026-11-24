@@ -1,0 +1,21 @@
+{
+  "mappings": {
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "name": {
+        "type": "keyword",
+        "store": true
+      },
+      "type": {
+        "type": "keyword",
+        "store": true
+      },
+      "createdAt": {
+        "type": "date",
+        "store": true
+      }
+    }
+  }
+}

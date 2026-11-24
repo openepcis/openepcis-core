@@ -1,0 +1,17 @@
+{
+  "description": "Extract and duplicate defaultGroup and userID fields to top level",
+  "processors": [
+    {
+      "set": {
+        "field": "defaultGroup",
+        "value": "{{metadata.capturedBy.0.defaultGroup}}"
+      }
+    },
+    {
+      "set": {
+        "field": "userID",
+        "value": "{{metadata.capturedBy.0.userID}}"
+      }
+    }
+  ]
+}

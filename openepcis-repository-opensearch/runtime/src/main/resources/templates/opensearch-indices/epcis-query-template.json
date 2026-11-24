@@ -1,0 +1,74 @@
+{
+  "index_patterns": [
+    "epcis-query-*"
+  ],
+  "settings": {
+    "number_of_shards": "5",
+    "number_of_replicas": "1"
+  },
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "strings_as_keywords": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "type": "keyword"
+          }
+        }
+      }
+    ],
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "metadata" : {
+        "type": "nested",
+        "properties" : {
+          "capturedBy" : {
+            "type" : "object",
+            "properties" : {
+              "captureID" : {
+                "type" : "keyword",
+                "store": true
+              },
+              "timestamp" : {
+                "type" : "date",
+                "store": true
+              },
+              "userID" : {
+                "type" : "keyword",
+                "store": true
+              },
+              "defaultGroup" : {
+                "type" : "keyword",
+                "store": true
+              }
+            }
+          }
+        }
+      },
+      "name": {
+        "type": "keyword",
+        "store": true
+      },
+      "epcisVersion": {
+        "type": "keyword",
+        "store": true
+      },
+      "createdAt": {
+        "type": "date",
+        "store": true
+      },
+      "epcisQuery": {
+        "type": "object"
+      },
+      "deleted": {
+        "type": "boolean",
+        "store": true
+      }
+    }
+  },
+  "aliases": {
+    "epcis-query": {}
+  }
+}

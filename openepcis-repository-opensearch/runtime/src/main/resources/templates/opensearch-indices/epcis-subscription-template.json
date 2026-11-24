@@ -1,0 +1,152 @@
+{
+  "index_patterns": [
+    "epcis-subscription-*"
+  ],
+  "settings": {
+    "number_of_shards": "5",
+    "number_of_replicas": "1"
+  },
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "strings_as_keywords": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "type": "keyword"
+          }
+        }
+      }
+    ],
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "metadata" : {
+        "type": "nested",
+        "properties" : {
+          "capturedBy" : {
+            "type" : "object",
+            "properties" : {
+              "timestamp" : {
+                "type" : "date",
+                "store": true
+              },
+              "userID" : {
+                "type" : "keyword",
+                "store": true
+              },
+              "defaultGroup" : {
+                "type" : "keyword",
+                "store": true
+              }
+            }
+          }
+        }
+      },
+      "subscriptionID": {
+        "type": "keyword",
+        "store": true
+      },
+      "wsSessionID": {
+        "type": "keyword",
+        "store": true
+      },
+      "queryName": {
+        "type": "keyword",
+        "store": true
+      },
+      "epcisVersion": {
+        "type": "keyword",
+        "store": true
+      },
+      "dest": {
+        "type": "keyword",
+        "store": true
+      },
+      "signatureToken": {
+        "type": "keyword",
+        "store": true
+      },
+      "initialRecordTime": {
+        "type": "date",
+        "store": true
+      },
+      "minRecordTime": {
+        "type": "date",
+        "store": true
+      },
+      "reportIfEmpty" : {
+        "type" : "boolean",
+        "store" : true
+      },
+      "status": {
+        "type": "keyword",
+        "store": true
+      },
+      "errorDescription": {
+        "type": "keyword",
+        "store": true
+      },
+      "createdAt": {
+        "type": "date",
+        "store": true
+      },
+      "stream": {
+        "type": "boolean",
+        "store": true
+      },
+      "schedule": {
+        "type": "object",
+        "properties": {
+          "second": {
+            "type": "keyword",
+            "store": true
+          },
+          "minute": {
+            "type": "keyword",
+            "store": true
+          },
+          "hour": {
+            "type": "keyword",
+            "store": true
+          },
+          "dayOfMonth": {
+            "type": "keyword",
+            "store": true
+          },
+          "month": {
+            "type": "keyword",
+            "store": true
+          },
+          "dayOfWeek": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "deleted": {
+        "type": "boolean",
+        "store": true
+      },
+      "epcFormat": {
+        "type": "keyword",
+        "store": true
+      },
+      "cbvFormat": {
+        "type": "keyword",
+        "store": true
+      },
+      "subscribedBy": {
+        "type": "keyword",
+        "store": true
+      },
+      "defaultGroup": {
+        "type": "keyword",
+        "store": true
+      }
+    }
+  },
+  "aliases": {
+    "epcis-subscription": {}
+  }
+}

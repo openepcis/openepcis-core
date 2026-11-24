@@ -1,0 +1,141 @@
+{
+  "index_patterns": [
+    "capture-job*"
+  ],
+  "settings": {
+    "number_of_shards": "5",
+    "number_of_replicas": "1",
+    "default_pipeline": "add_metadata_pipeline"
+  },
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "strings_as_keywords": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "type": "keyword"
+          }
+        }
+      }
+    ],
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "@context": {
+        "type": "object",
+        "enabled": false
+      },
+      "metadata" : {
+        "type": "nested",
+        "properties" : {
+          "capturedBy" : {
+            "type" : "object",
+            "properties" : {
+              "captureID" : {
+                "type" : "keyword",
+                "store" : true
+              },
+              "timestamp" : {
+                "type" : "date",
+                "store" : true
+              },
+              "userID" : {
+                "type" : "keyword",
+                "store" : true
+              },
+              "defaultGroup" : {
+                "type" : "keyword",
+                "store" : true
+              }
+            }
+          }
+        }
+      },
+      "captureID" : {
+        "type" : "keyword",
+        "store" : true
+      },
+      "createdAt" : {
+        "type" : "date",
+        "store" : true
+      },
+      "finishedAt" : {
+        "type" : "date",
+        "store" : true
+      },
+      "duration" : {
+        "type" : "long",
+        "store" : true
+      },
+      "duration" : {
+        "type" : "long",
+        "store" : true
+      },
+      "running" : {
+        "type" : "boolean",
+        "store" : true
+      },
+      "success" : {
+        "type" : "boolean",
+        "store" : true
+      },
+      "captureErrorBehaviour" : {
+        "type" : "keyword",
+        "store" : true
+      },
+      "errors" : {
+        "type" : "nested",
+        "properties" : {
+          "detail" : {
+            "type" : "keyword",
+            "store" : true
+          },
+          "sequenceInEPCISDoc" : {
+            "type" : "long",
+            "store" : true
+          },
+          "status" : {
+            "type" : "long",
+            "store" : true
+          },
+          "title" : {
+            "type" : "keyword",
+            "store" : true
+          },
+          "type" : {
+            "type" : "keyword",
+            "store" : true
+          }
+        }
+      },
+      "validEventCount" : {
+        "type" : "long",
+        "store" : true
+      },
+      "invalidEventCount" : {
+        "type" : "long",
+        "store" : true
+      },
+      "processedEventCount" : {
+        "type" : "long",
+        "store" : true
+      },
+      "capturedEventCount" : {
+        "type" : "long",
+        "store" : true
+      },
+      "storageBucket" : {
+        "type" : "keyword",
+        "store" : true
+      },
+      "storageKey" : {
+        "type" : "keyword",
+        "store" : true
+      }
+    }
+  },
+  "aliases": {
+    "capture-job": {}
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "mappings": {
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "metadata" : {
+        "type": "nested",
+        "properties" : {
+          "capturedBy" : {
+            "type" : "object",
+            "properties" : {
+              "timestamp" : {
+                "type" : "date",
+                "store": true
+              },
+              "userID" : {
+                "type" : "keyword",
+                "store": true
+              },
+              "defaultGroup" : {
+                "type" : "keyword",
+                "store": true
+              }
+            }
+          }
+        }
+      },
+      "namespace": {
+        "type": "keyword",
+        "store": true
+      },
+      "jsonSchemaS3Key": {
+        "type": "keyword",
+        "store": true
+      },
+      "jsonSchemaUrl": {
+        "type": "keyword",
+        "store": true
+      },
+      "defaultPrefix": {
+        "type": "keyword",
+        "store": true
+      },
+      "jsonldContextUrl": {
+        "type": "keyword",
+        "store": true
+      },
+      "createdAt": {
+        "type": "date",
+        "store": true
+      },
+      "updatedAt": {
+        "type": "date",
+        "store": true
+      },
+      "createdBy": {
+        "type": "keyword",
+        "store": true
+      },
+      "updatedBy": {
+        "type": "keyword",
+        "store": true
+      }
+    }
+  }
+}

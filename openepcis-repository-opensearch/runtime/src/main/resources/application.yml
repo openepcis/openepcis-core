@@ -1,0 +1,29 @@
+#
+# Copyright 2022-2026 benelog GmbH & Co. KG
+#
+#     Licensed under the Apache License, Version 2.0 (the "License");
+#     you may not use this file except in compliance with the License.
+#     You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#     Unless required by applicable law or agreed to in writing, software
+#     distributed under the License is distributed on an "AS IS" BASIS,
+#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#     See the License for the specific language governing permissions and
+#     limitations under the License.
+#
+
+opensearch:
+  templates:
+    capture-job: "/templates/opensearch-indices/capture-job-template.json"
+    epcis-event: "/templates/opensearch-indices/epcis-event-template.json"
+    epc: "/templates/opensearch-indices/epc-template.json"
+    epcis-query: "/templates/opensearch-indices/epcis-query-template.json"
+    epcis-subscription: "/templates/opensearch-indices/epcis-subscription-template.json"
+    epcis-percolator-queries: "/templates/opensearch-indices/epcis-percolator-queries-template.json"
+  indices:
+    user-extension-fields: "/templates/opensearch-indices/user-extension-fields.json"
+    user-extension-schema: "/templates/opensearch-indices/user-extension-schema.json"
+  pipelines:
+    add-meta-data-pipeline: "/templates/opensearch-indices/add-metadata-pipeline.json"

@@ -1,0 +1,1548 @@
+{
+  "mappings":{
+    "numeric_detection": true,
+    "date_detection": true,
+    "dynamic_templates": [
+      {
+        "strings_as_keywords": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "type": "keyword"
+          }
+        }
+      }
+    ],
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "queryName": {
+        "type": "keyword",
+        "store": true
+      },
+      "query": {
+        "type": "percolator"
+      },
+      "id": {
+        "type": "keyword",
+        "store": true
+      },
+      "eventID": {
+        "type": "keyword",
+        "store": true
+      },
+      "hash": {
+        "type": "keyword",
+        "store": true
+      },
+      "metadata" : {
+        "type": "nested",
+        "properties" : {
+          "capturedBy" : {
+            "type" : "object",
+            "properties" : {
+              "timestamp" : {
+                "type" : "date",
+                "store": true
+              },
+              "userID" : {
+                "type" : "keyword",
+                "store": true
+              },
+              "defaultGroup" : {
+                "type" : "keyword",
+                "store": true
+              }
+            }
+          }
+        }
+      },
+      "contextInfo": {
+        "type": "object"
+      },
+      "type": {
+        "type": "keyword",
+        "store": true
+      },
+      "recordTime": {
+        "type": "date",
+        "store": true
+      },
+      "eventTime": {
+        "type": "date",
+        "store": true
+      },
+      "eventTimeZoneOffset": {
+        "type": "keyword",
+        "store": true
+      },
+      "parentID": {
+        "type": "object",
+        "properties": {
+          "asCaptured": {
+            "type": "keyword",
+            "store": true
+          },
+          "canonicalDL": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURN": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURI": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "childEPCs": {
+        "type": "object",
+        "properties": {
+          "asCaptured": {
+            "type": "keyword",
+            "store": true
+          },
+          "canonicalDL": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURN": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURI": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "captureVersion": {
+        "type": "long"
+      },
+      "epcList": {
+        "type": "object",
+        "properties": {
+          "asCaptured": {
+            "type": "keyword",
+            "store": true
+          },
+          "canonicalDL": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURN": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURI": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "action": {
+        "type": "keyword",
+        "store": true
+      },
+      "bizStep": {
+        "type": "object",
+        "properties": {
+          "asCaptured": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURN": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURI": {
+            "type": "keyword",
+            "store": true
+          },
+          "asBareString": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "readPoint": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "userExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          },
+          "innerUserExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          }
+        }
+      },
+      "disposition": {
+        "type": "object",
+        "properties": {
+          "asCaptured": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURN": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURI": {
+            "type": "keyword",
+            "store": true
+          },
+          "asBareString": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "persistentDisposition": {
+        "type": "object",
+        "properties": {
+          "set": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              },
+              "asBareString": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "unset": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              },
+              "asBareString": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          }
+        }
+      },
+      "bizLocation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "userExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          },
+          "innerUserExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          }
+        }
+      },
+      "quantityList": {
+        "type": "nested",
+        "properties": {
+          "epcClass": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "quantity": {
+            "type": "float",
+            "store": true
+          },
+          "uom": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "inputQuantityList": {
+        "type": "nested",
+        "properties": {
+          "epcClass": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "quantity": {
+            "type": "float",
+            "store": true
+          },
+          "uom": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "outputQuantityList": {
+        "type": "nested",
+        "properties": {
+          "epcClass": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "quantity": {
+            "type": "float",
+            "store": true
+          },
+          "uom": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "transformationID": {
+        "type": "keyword",
+        "store": true
+      },
+      "inputEPCList": {
+        "type": "object",
+        "properties": {
+          "asCaptured": {
+            "type": "keyword",
+            "store": true
+          },
+          "canonicalDL": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURN": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURI": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "outputEPCList": {
+        "type": "object",
+        "properties": {
+          "asCaptured": {
+            "type": "keyword",
+            "store": true
+          },
+          "canonicalDL": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURN": {
+            "type": "keyword",
+            "store": true
+          },
+          "asURI": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "childQuantityList": {
+        "type": "nested",
+        "properties": {
+          "epcClass": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "quantity": {
+            "type": "float",
+            "store": true
+          },
+          "uom": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "bizTransactionList": {
+        "type": "nested",
+        "properties": {
+          "type": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              },
+              "asBareString": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "bizTransaction": {
+            "type": "keyword",
+            "store": true
+          }
+        }
+      },
+      "sourceList": {
+        "type": "nested",
+        "properties": {
+          "type": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          }
+        }
+      },
+      "errorDeclaration": {
+        "type": "nested",
+        "properties": {
+          "correctiveEventIDs": {
+            "type": "keyword",
+            "store": true
+          },
+          "declarationTime": {
+            "type": "date",
+            "store": true
+          },
+          "reason": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              },
+              "asBareString": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "userExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          },
+          "innerUserExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          }
+        }
+      },
+      "destinationList": {
+        "type": "nested",
+        "properties": {
+          "type": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              },
+              "asBareString": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "destination": {
+            "type": "object",
+            "properties": {
+              "asCaptured": {
+                "type": "keyword",
+                "store": true
+              },
+              "canonicalDL": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURN": {
+                "type": "keyword",
+                "store": true
+              },
+              "asURI": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          }
+        }
+      },
+      "userExtensions": {
+        "type": "nested",
+        "properties": {
+          "path": {
+            "type": "keyword",
+            "store": true
+          },
+          "key": {
+            "type": "keyword",
+            "store": true
+          },
+          "expandedKey": {
+            "type": "keyword",
+            "store": true
+          },
+          "keywordValue": {
+            "type": "keyword",
+            "store": true
+          },
+          "booleanValue": {
+            "type": "keyword",
+            "store": true
+          },
+          "longValue": {
+            "type": "long",
+            "store": true
+          },
+          "doubleValue": {
+            "type": "double",
+            "store": true
+          },
+          "dateValue": {
+            "type": "date",
+            "store": true
+          },
+          "objectValue": {
+            "type": "object",
+            "enabled": false
+          }
+        }
+      },
+      "innerUserExtensions": {
+        "type": "nested",
+        "properties": {
+          "path": {
+            "type": "keyword",
+            "store": true
+          },
+          "key": {
+            "type": "keyword",
+            "store": true
+          },
+          "expandedKey": {
+            "type": "keyword",
+            "store": true
+          },
+          "keywordValue": {
+            "type": "keyword",
+            "store": true
+          },
+          "booleanValue": {
+            "type": "keyword",
+            "store": true
+          },
+          "longValue": {
+            "type": "long",
+            "store": true
+          },
+          "doubleValue": {
+            "type": "double",
+            "store": true
+          },
+          "dateValue": {
+            "type": "date",
+            "store": true
+          },
+          "objectValue": {
+            "type": "object",
+            "enabled": false
+          }
+        }
+      },
+      "sensorElementList": {
+        "type": "nested",
+        "properties": {
+          "innerUserExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          },
+          "sensorMetadata": {
+            "type": "nested",
+            "properties": {
+              "innerUserExtensions": {
+                "type": "nested",
+                "properties": {
+                  "path": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "key": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "expandedKey": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "keywordValue": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "booleanValue": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "longValue": {
+                    "type": "long",
+                    "store": true
+                  },
+                  "doubleValue": {
+                    "type": "double",
+                    "store": true
+                  },
+                  "dateValue": {
+                    "type": "date",
+                    "store": true
+                  },
+                  "objectValue": {
+                    "type": "object",
+                    "enabled": false
+                  }
+                }
+              },
+              "time": {
+                "type": "date",
+                "store": true
+              },
+              "deviceID": {
+                "type": "object",
+                "properties": {
+                  "asCaptured": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "canonicalDL": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURN": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURI": {
+                    "type": "keyword",
+                    "store": true
+                  }
+                }
+              },
+              "deviceMetadata": {
+                "type": "object",
+                "properties": {
+                  "asCaptured": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "canonicalDL": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURN": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURI": {
+                    "type": "keyword",
+                    "store": true
+                  }
+                }
+              },
+              "rawData": {
+                "type": "object",
+                "properties": {
+                  "asCaptured": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "canonicalDL": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURN": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURI": {
+                    "type": "keyword",
+                    "store": true
+                  }
+                }
+              },
+              "dataProcessingMethod": {
+                "type": "keyword",
+                "store": true
+              },
+              "bizRules": {
+                "type": "keyword",
+                "store": true
+              },
+              "startTime": {
+                "type": "date",
+                "store": true
+              },
+              "endTime": {
+                "type": "date",
+                "store": true
+              },
+              "userExtensions": {
+                "type": "nested",
+                "properties": {
+                  "path": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "key": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "expandedKey": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "keywordValue": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "booleanValue": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "longValue": {
+                    "type": "long",
+                    "store": true
+                  },
+                  "doubleValue": {
+                    "type": "double",
+                    "store": true
+                  },
+                  "dateValue": {
+                    "type": "date",
+                    "store": true
+                  },
+                  "objectValue": {
+                    "type": "object",
+                    "enabled": false
+                  }
+                }
+              }
+            }
+          },
+          "sensorReport": {
+            "type": "nested",
+            "properties": {
+              "innerUserExtensions": {
+                "type": "nested",
+                "properties": {
+                  "path": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "key": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "expandedKey": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "keywordValue": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "booleanValue": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "longValue": {
+                    "type": "long",
+                    "store": true
+                  },
+                  "doubleValue": {
+                    "type": "double",
+                    "store": true
+                  },
+                  "dateValue": {
+                    "type": "date",
+                    "store": true
+                  },
+                  "objectValue": {
+                    "type": "object",
+                    "enabled": false
+                  }
+                }
+              },
+              "userExtensions": {
+                "type": "nested",
+                "properties": {
+                  "path": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "key": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "expandedKey": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "keywordValue": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "booleanValue": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "longValue": {
+                    "type": "long",
+                    "store": true
+                  },
+                  "doubleValue": {
+                    "type": "double",
+                    "store": true
+                  },
+                  "dateValue": {
+                    "type": "date",
+                    "store": true
+                  },
+                  "objectValue": {
+                    "type": "object",
+                    "enabled": false
+                  }
+                }
+              },
+              "stringValue": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "type": {
+                "type": "object",
+                "properties": {
+                  "asCaptured": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "canonicalDL": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURN": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURI": {
+                    "type": "keyword",
+                    "store": true
+                  }
+                }
+              },
+              "exception": {
+                "type": "keyword",
+                "store": true
+              },
+              "uom": {
+                "type": "keyword",
+                "store": true
+              },
+              "uriValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "boolean",
+                "store": true
+              },
+              "hexBinaryValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "value": {
+                "type": "double",
+                "store": true
+              },
+              "minValue": {
+                "type": "double",
+                "store": true
+              },
+              "maxValue": {
+                "type": "double",
+                "store": true
+              },
+              "meanValue": {
+                "type": "double",
+                "store": true
+              },
+              "sDev": {
+                "type": "double",
+                "store": true
+              },
+              "percRank": {
+                "type": "double",
+                "store": true
+              },
+              "percValue": {
+                "type": "double",
+                "store": true
+              },
+              "chemicalSubstance": {
+                "type": "keyword",
+                "store": true
+              },
+              "microorganism": {
+                "type": "keyword",
+                "store": true
+              },
+              "deviceID": {
+                "type": "object",
+                "properties": {
+                  "asCaptured": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "canonicalDL": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURN": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURI": {
+                    "type": "keyword",
+                    "store": true
+                  }
+                }
+              },
+              "deviceMetadata": {
+                "type": "object",
+                "properties": {
+                  "asCaptured": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "canonicalDL": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURN": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURI": {
+                    "type": "keyword",
+                    "store": true
+                  }
+                }
+              },
+              "rawData": {
+                "type": "object",
+                "properties": {
+                  "asCaptured": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "canonicalDL": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURN": {
+                    "type": "keyword",
+                    "store": true
+                  },
+                  "asURI": {
+                    "type": "keyword",
+                    "store": true
+                  }
+                }
+              },
+              "time": {
+                "type": "date",
+                "store": true
+              },
+              "dataProcessingMethod": {
+                "type": "keyword",
+                "store": true
+              }
+            }
+          },
+          "userExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          }
+        }
+      },
+      "ilmd": {
+        "type": "object",
+        "properties": {
+          "userExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          },
+          "innerUserExtensions": {
+            "type": "nested",
+            "properties": {
+              "path": {
+                "type": "keyword",
+                "store": true
+              },
+              "key": {
+                "type": "keyword",
+                "store": true
+              },
+              "expandedKey": {
+                "type": "keyword",
+                "store": true
+              },
+              "keywordValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "booleanValue": {
+                "type": "keyword",
+                "store": true
+              },
+              "longValue": {
+                "type": "long",
+                "store": true
+              },
+              "doubleValue": {
+                "type": "double",
+                "store": true
+              },
+              "dateValue": {
+                "type": "date",
+                "store": true
+              },
+              "objectValue": {
+                "type": "object",
+                "enabled": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
