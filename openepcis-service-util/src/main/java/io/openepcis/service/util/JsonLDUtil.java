@@ -35,7 +35,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
@@ -45,13 +44,74 @@ import static io.openepcis.model.epcis.exception.ExceptionMessages.ERROR_WHILE_V
 public class JsonLDUtil {
   private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(JsonLDUtil.class);
   /**
-   * The GS1 EPCIS 2.0 context under every URL a document may name it by, served from the jar. A
-   * document that names only these needs no network to be expanded.
+   * The GS1 EPCIS 2.0 contexts under every URL a document may name them by, served from the jar. A
+   * document that names only these needs no network to be expanded. Each URL gets its own version:
+   * 2.0.1, which the unversioned URL serves, maps the prefix gs1 to https://ref.gs1.org/voc/ as the
+   * rest of the code expects, 2.0.0 to https://gs1.org/voc/. Both are @protected, so a context
+   * built on the unversioned URL (those of ref.openepcis.org are) clashes with the 2.0.0 copy.
    */
-  private static final Map<String, String> jsonLDSchemaMap =
+  private static final Map<String, String> GS1_CONTEXTS =
       Map.of(
-          EPCISVersion.getDefaultJSONContext(), "/epcis-context-2.0.0.jsonld",
+          EPCISVersion.getDefaultJSONContext(), "/epcis-context-2.0.1.jsonld",
+          "https://ref.gs1.org/standards/epcis/2.0.1/epcis-context.jsonld", "/epcis-context-2.0.1.jsonld",
           "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld", "/epcis-context-2.0.0.jsonld");
+
+  /** Where a jar lists further contexts it bundles, as [{"url": …, "resource": …}]. */
+  static final String BUNDLED_CONTEXTS_MANIFEST = "bundled-jsonld-contexts/manifest.json";
+
+  /**
+   * Every context served from the classpath: the GS1 ones, then those of each
+   * {@value #BUNDLED_CONTEXTS_MANIFEST} on the classpath (the extension contexts of
+   * ref.openepcis.org in this jar; an edition can add its own). The first entry for a URL wins.
+   */
+  private static final Map<String, String> jsonLDSchemaMap = bundledContexts();
+
+  private static Map<String, String> bundledContexts() {
+    final Map<String, String> contexts = new java.util.LinkedHashMap<>(GS1_CONTEXTS);
+    try {
+      final java.util.Enumeration<java.net.URL> manifests =
+          JsonLDUtil.class.getClassLoader().getResources(BUNDLED_CONTEXTS_MANIFEST);
+      while (manifests.hasMoreElements()) {
+        final java.net.URL manifest = manifests.nextElement();
+        final jakarta.json.JsonArray entries;
+        try (InputStream in = manifest.openStream();
+            jakarta.json.JsonReader reader = jakarta.json.Json.createReader(in)) {
+          entries = reader.readArray();
+        } catch (java.io.IOException | RuntimeException e) {
+          log.warn("Bundled JSON-LD context manifest {} not readable, its contexts are loaded from the network: {}", manifest, e.toString());
+          continue;
+        }
+        // entry by entry: a malformed one costs only itself
+        for (final jakarta.json.JsonValue entry : entries) {
+          try {
+            final JsonObject context = entry.asJsonObject();
+            contexts.putIfAbsent(context.getString("url"), "/" + context.getString("resource"));
+          } catch (RuntimeException e) {
+            log.warn("Skipping malformed entry {} of the bundled JSON-LD context manifest {}", entry, manifest);
+          }
+        }
+      }
+    } catch (java.io.IOException e) {
+      log.warn("Bundled JSON-LD context manifests not found: {}", e.toString());
+    }
+    return Map.copyOf(contexts);
+  }
+
+  /** Whether the context at this URL is served from the classpath. */
+  static boolean isBundled(final String url) {
+    return jsonLDSchemaMap.containsKey(url);
+  }
+
+  /** How long a context that failed to load is not requested again. */
+  private static final long FAILED_CONTEXT_RETRY_MILLIS = 60_000;
+
+  /**
+   * Remote contexts that failed to load, with the time they may be tried again. Expansion is
+   * serialised (EXPAND_LOCK), so without it every capture naming an unreachable context would
+   * wait for that context again.
+   */
+  private final java.util.concurrent.ConcurrentMap<String, Long> failedContexts =
+      new java.util.concurrent.ConcurrentHashMap<>();
 
   /** Bounds the in-memory copy of remote contexts; a context is small and documents name few. */
   private static final int MAX_CACHED_CONTEXTS = 256;
@@ -88,7 +148,23 @@ public class JsonLDUtil {
     if (cached != null) {
       return cached;
     }
-    final byte[] loaded = fetchDocumentBytes(uri, documentLoaderOptions);
+    final Long retryAt = failedContexts.get(key);
+    if (retryAt != null) {
+      if (System.currentTimeMillis() < retryAt) {
+        throw new JsonLdError(JsonLdErrorCode.LOADING_DOCUMENT_FAILED, "loading " + key + " failed recently, not tried again yet");
+      }
+      failedContexts.remove(key);
+    }
+    final byte[] loaded;
+    try {
+      loaded = fetchDocumentBytes(uri, documentLoaderOptions);
+    } catch (JsonLdError e) {
+      // the cause reaches the expansion warning through Titanium's error chain
+      if (failedContexts.size() < MAX_CACHED_CONTEXTS) {
+        failedContexts.put(key, System.currentTimeMillis() + FAILED_CONTEXT_RETRY_MILLIS);
+      }
+      throw e;
+    }
     if (contextCache.size() < MAX_CACHED_CONTEXTS) {
       contextCache.putIfAbsent(key, loaded);
     }
@@ -96,10 +172,23 @@ public class JsonLDUtil {
   }
 
   private byte[] fetchDocumentBytes(final URI uri, final DocumentLoaderOptions documentLoaderOptions) throws JsonLdError {
+    // the map is keyed by the URL as text; a lookup by URI never matched, so the bundled
+    // context was never used and the GS1 one was fetched from ref.gs1.org
+    final String bundled = jsonLDSchemaMap.get(uri.toString());
+    if (bundled != null) {
+      // read as a stream: inside the application jar the resource has a jar: URL, which the
+      // scheme router (http, https, file) cannot load
+      try (InputStream in = JsonLDUtil.class.getResourceAsStream(bundled)) {
+        if (in == null) {
+          throw new JsonLdError(JsonLdErrorCode.LOADING_DOCUMENT_FAILED, "bundled context missing: " + bundled);
+        }
+        return in.readAllBytes();
+      } catch (java.io.IOException e) {
+        throw new JsonLdError(JsonLdErrorCode.LOADING_DOCUMENT_FAILED, e);
+      }
+    }
     try {
-      // the map is keyed by the URL as text; a lookup by URI never matched, so the bundled
-      // context was never used and the GS1 one was fetched from ref.gs1.org
-      Document loaded = jsonLDSchemaMap.containsKey(uri.toString()) ? SchemeRouter.defaultInstance().loadDocument(JsonLDUtil.class.getResource(jsonLDSchemaMap.get(uri.toString())).toURI(), documentLoaderOptions) : SchemeRouter.defaultInstance().loadDocument(uri, documentLoaderOptions);
+      Document loaded = SchemeRouter.defaultInstance().loadDocument(uri, documentLoaderOptions);
       // Serialise the parsed JSON-LD Document back to bytes so the cache
       // stores an immutable representation that can be re-parsed on every
       // call, isolating each expansion from Titanium's in-place mutation.
@@ -108,8 +197,8 @@ public class JsonLDUtil {
         w.write(loaded.getJsonContent().orElseThrow(() -> new JsonLdError(JsonLdErrorCode.LOADING_DOCUMENT_FAILED)));
       }
       return out.toByteArray();
-    } catch (URISyntaxException | RuntimeException e) {
-      throw new JsonLdError(JsonLdErrorCode.UNSPECIFIED);
+    } catch (RuntimeException e) {
+      throw new JsonLdError(JsonLdErrorCode.LOADING_DOCUMENT_FAILED, e);
     }
   }
 
@@ -121,6 +210,18 @@ public class JsonLDUtil {
   // internal non-Document state can't race either. At demo/capture scale
   // (sub-ms per expansion) this has no measurable throughput impact.
   private static final Object EXPAND_LOCK = new Object();
+
+  /** The message chain down to the root cause: Titanium wraps every loader failure alike. */
+  private static String rootCauseMessage(final Throwable error) {
+    final StringBuilder message = new StringBuilder(String.valueOf(error.getMessage()));
+    // bounded: a cause chain can loop
+    int depth = 0;
+    for (Throwable cause = error.getCause(); cause != null && cause != error && depth < 10; cause = cause.getCause(), depth++) {
+      message.append(" <- ").append(cause);
+    }
+    return message.toString();
+  }
+
 
   public Uni<JsonObject> expandJsonLDDocument(final String captureString) {
     return Uni.createFrom().<JsonObject>emitter(em -> {
@@ -138,7 +239,7 @@ public class JsonLDUtil {
           // event still needs to land in OpenSearch — downstream
           // setUserExtensionsForAll() simply walks an empty extracted
           // event and produces no extension fields. Log + degrade.
-          log.warn("JSON-LD expansion failed (event will be persisted without" + " extracted user extensions): {}", e.getMessage());
+          log.warn("JSON-LD expansion failed (event will be persisted without" + " extracted user extensions): {}", rootCauseMessage(e));
           em.complete(jakarta.json.Json.createObjectBuilder().build());
         } catch (Exception e) {
           log.error(ERROR_WHILE_VALIDATING_JSONLD_USER_EXTENSION_FIELDS, e);

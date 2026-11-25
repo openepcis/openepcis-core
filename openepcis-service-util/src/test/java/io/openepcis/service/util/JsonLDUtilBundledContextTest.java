@@ -15,12 +15,19 @@
  */
 package io.openepcis.service.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.apicatalog.jsonld.loader.DocumentLoaderOptions;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import java.io.ByteArrayInputStream;
+import java.lang.reflect.Field;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import org.eclipse.microprofile.context.ManagedExecutor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +41,7 @@ class JsonLDUtilBundledContextTest {
     for (final String url :
         new String[] {
           "https://ref.gs1.org/standards/epcis/epcis-context.jsonld",
+          "https://ref.gs1.org/standards/epcis/2.0.1/epcis-context.jsonld",
           "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
         }) {
       final byte[] first = util.loadDocumentBytes(URI.create(url), new DocumentLoaderOptions());
@@ -43,5 +51,110 @@ class JsonLDUtilBundledContextTest {
       // the second call is served from memory, not loaded again
       assertSame(first, util.loadDocumentBytes(URI.create(url), new DocumentLoaderOptions()), url);
     }
+  }
+
+  @Test
+  @DisplayName("each GS1 context URL is served in its own version, with its own gs1 prefix")
+  void gs1PrefixFollowsTheVersion() throws Exception {
+    final JsonLDUtil util = new JsonLDUtil();
+    for (final String url :
+        new String[] {
+          "https://ref.gs1.org/standards/epcis/epcis-context.jsonld",
+          "https://ref.gs1.org/standards/epcis/2.0.1/epcis-context.jsonld",
+          "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
+        }) {
+      assertTrue(JsonLDUtil.isBundled(url), url);
+    }
+    assertEquals("https://ref.gs1.org/voc/", gs1Prefix(util, "https://ref.gs1.org/standards/epcis/epcis-context.jsonld"));
+    assertEquals("https://ref.gs1.org/voc/", gs1Prefix(util, "https://ref.gs1.org/standards/epcis/2.0.1/epcis-context.jsonld"));
+    assertEquals("https://gs1.org/voc/", gs1Prefix(util, "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"));
+  }
+
+  @Test
+  @DisplayName("an extension context built on the current GS1 context expands without a protected-term clash")
+  void extensionContextOnTheCurrentGs1Context() throws Exception {
+    final JsonLDUtil util = new JsonLDUtil();
+    final Field executor = JsonLDUtil.class.getDeclaredField("managedExecutor");
+    executor.setAccessible(true);
+    executor.set(util, ManagedExecutor.builder().build());
+    // what the contexts of ref.openepcis.org do: repeat the gs1 prefix of the current GS1 context
+    final String document =
+        "{\"@context\":[\"https://ref.gs1.org/standards/epcis/epcis-context.jsonld\","
+            + "{\"gs1\":\"https://ref.gs1.org/voc/\",\"eubat\":\"https://ref.openepcis.org/extensions/eu/battery/\"}],"
+            + "\"type\":\"EPCISDocument\",\"schemaVersion\":\"2.0\",\"creationDate\":\"2026-11-25T00:00:00.000Z\","
+            + "\"epcisBody\":{\"eventList\":[{\"type\":\"ObjectEvent\",\"eventTime\":\"2026-11-25T00:00:00.000Z\","
+            + "\"eventTimeZoneOffset\":\"+00:00\",\"epcList\":[\"https://id.example.com/01/09521234000013/21/1\"],"
+            + "\"action\":\"ADD\",\"eubat:stateOfHealth\":97}]}}";
+    final JsonObject expanded = util.expandJsonLDDocument(document).await().atMost(Duration.ofSeconds(30));
+    // a failed expansion degrades to an empty object, so the extension term must be there
+    assertTrue(expanded.toString().contains("https://ref.openepcis.org/extensions/eu/battery/stateOfHealth"), expanded.toString());
+  }
+
+  private static String gs1Prefix(final JsonLDUtil util, final String url) throws Exception {
+    final byte[] context = util.loadDocumentBytes(URI.create(url), new DocumentLoaderOptions());
+    return Json.createReader(new ByteArrayInputStream(context)).readObject().getJsonObject("@context").getString("gs1");
+  }
+
+  @Test
+  @DisplayName("every extension context of the manifest is on the classpath, benetag is not")
+  void extensionContextsAreBundled() throws Exception {
+    final JsonLDUtil util = new JsonLDUtil();
+    final jakarta.json.JsonArray manifest;
+    try (java.io.InputStream in = JsonLDUtil.class.getClassLoader().getResourceAsStream(JsonLDUtil.BUNDLED_CONTEXTS_MANIFEST)) {
+      manifest = Json.createReader(in).readArray();
+    }
+    assertTrue(manifest.size() > 10, "manifest lists the extension contexts");
+    for (final jakarta.json.JsonValue entry : manifest) {
+      final String url = entry.asJsonObject().getString("url");
+      assertTrue(!url.contains("benetag"), url);
+      // served from the jar, not merely reachable: the loader falls back to the network otherwise
+      assertTrue(JsonLDUtil.isBundled(url), url);
+      final byte[] context = util.loadDocumentBytes(URI.create(url), new DocumentLoaderOptions());
+      assertTrue(Json.createReader(new ByteArrayInputStream(context)).readObject().containsKey("@context"), url);
+    }
+  }
+
+  @Test
+  // dpp-core-context names gs1-shortcuts-context as a remote scoped context; JSON-LD 1.1 processes
+  // that without override-protected, so it must not redefine a term of the protected GS1 context
+  // (openepcis-dpp-ready#37). Fails on the contexts before that fix.
+  @DisplayName("a battery event with the contexts of ref.openepcis.org expands from the jar")
+  void batteryEventWithRefContexts() throws Exception {
+    final JsonLDUtil util = new JsonLDUtil();
+    final Field executor = JsonLDUtil.class.getDeclaredField("managedExecutor");
+    executor.setAccessible(true);
+    executor.set(util, ManagedExecutor.builder().build());
+    final String document =
+        "{\"@context\":[\"https://ref.gs1.org/standards/epcis/epcis-context.jsonld\","
+            + "\"https://ref.openepcis.org/extensions/common/core/dpp-core-context.jsonld\","
+            + "\"https://ref.openepcis.org/extensions/eu/battery/battery-context.jsonld\"],"
+            + "\"type\":\"EPCISDocument\",\"schemaVersion\":\"2.0\",\"creationDate\":\"2026-11-25T00:00:00.000Z\","
+            + "\"epcisBody\":{\"eventList\":[{\"type\":\"ObjectEvent\",\"eventTime\":\"2026-11-25T00:00:00.000Z\","
+            + "\"eventTimeZoneOffset\":\"+00:00\",\"epcList\":[\"https://id.example.com/01/09521234000013/21/1\"],"
+            + "\"action\":\"ADD\",\"eubat:stateOfHealth\":97,"
+            + "\"gs1:masterDataAvailableFor\":[{\"id\":\"https://id.gs1.org/01/09521234000013\",\"type\":\"Product\","
+            + "\"countryOfOrigin\":{\"countryCode\":\"DE\"}}]}]}}";
+    final JsonObject expanded = util.expandJsonLDDocument(document).await().atMost(Duration.ofSeconds(30));
+    final String json = expanded.toString();
+    assertTrue(json.contains("https://ref.openepcis.org/extensions/eu/battery/stateOfHealth"), json);
+    // inside the master data GS1 is the ambient vocabulary
+    assertTrue(json.contains("https://ref.gs1.org/voc/countryOfOrigin"), json);
+  }
+
+  @Test
+  @DisplayName("a context that failed to load is not requested again right away")
+  void failedContextIsNotRetriedAtOnce() {
+    final JsonLDUtil util = new JsonLDUtil();
+    final URI missing = URI.create("file:///nonexistent/openepcis-test/missing-context.jsonld");
+    final com.apicatalog.jsonld.JsonLdError first =
+        org.junit.jupiter.api.Assertions.assertThrows(
+            com.apicatalog.jsonld.JsonLdError.class,
+            () -> util.loadDocumentBytes(missing, new DocumentLoaderOptions()));
+    final com.apicatalog.jsonld.JsonLdError second =
+        org.junit.jupiter.api.Assertions.assertThrows(
+            com.apicatalog.jsonld.JsonLdError.class,
+            () -> util.loadDocumentBytes(missing, new DocumentLoaderOptions()));
+    assertTrue(!String.valueOf(first.getMessage()).contains("failed recently"), first.getMessage());
+    assertTrue(String.valueOf(second.getMessage()).contains("failed recently"), second.getMessage());
   }
 }

@@ -1,0 +1,198 @@
+{
+  "_comment": "OpenEPCIS EUDR Vocabulary v0.15.1, generated from extensions/eu/eudr/ontology/eudr.ttl. Do not edit by hand; re-run `pnpm run build:context` and edit extensions/eu/eudr/context/.context-overrides.json for non-derivable hints.",
+  "@context": [
+    "https://ref.openepcis.org/extensions/common/core/dpp-core-context.jsonld",
+    {
+      "@version": 1.1,
+      "id": "@id",
+      "type": "@type",
+      "eudr": "https://ref.openepcis.org/extensions/eu/eudr/",
+      "gs1": "https://ref.gs1.org/voc/",
+      "oec": "https://ref.openepcis.org/extensions/common/core/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "gs1:netWeight": {
+        "@id": "gs1:netWeight",
+        "@type": "@id"
+      },
+      "gs1:grossWeight": {
+        "@id": "gs1:grossWeight",
+        "@type": "@id"
+      },
+      "gs1:manufacturer": {
+        "@id": "gs1:manufacturer",
+        "@type": "@id"
+      },
+      "gs1:address": {
+        "@id": "gs1:address",
+        "@type": "@id"
+      },
+      "gs1:regulatoryInformation": {
+        "@id": "gs1:regulatoryInformation",
+        "@type": "@id"
+      },
+      "gs1:regulatoryIdentifier": {
+        "@id": "gs1:regulatoryIdentifier",
+        "@type": "@id"
+      },
+      "gs1:regulatoryInformationProvider": {
+        "@id": "gs1:regulatoryInformationProvider",
+        "@type": "@id"
+      },
+      "gs1:regulatoryReferenceApplicabilityStartDate": {
+        "@id": "gs1:regulatoryReferenceApplicabilityStartDate",
+        "@type": "xsd:date"
+      },
+      "gs1:regulatoryReferenceApplicabilityEndDate": {
+        "@id": "gs1:regulatoryReferenceApplicabilityEndDate",
+        "@type": "xsd:date"
+      },
+      "gs1:applicableProducts": {
+        "@id": "gs1:applicableProducts",
+        "@type": "@id"
+      },
+      "gs1:applicableTransactions": {
+        "@id": "gs1:applicableTransactions",
+        "@type": "@id"
+      },
+      "gs1:transactionDate": {
+        "@id": "gs1:transactionDate",
+        "@type": "xsd:date"
+      },
+      "gs1:messageSender": {
+        "@id": "gs1:messageSender",
+        "@type": "@id"
+      },
+      "gs1:messageRecipient": {
+        "@id": "gs1:messageRecipient",
+        "@type": "@id"
+      },
+      "gs1:geo": {
+        "@id": "gs1:geo",
+        "@type": "@id"
+      },
+      "gs1:countryOfOrigin": {
+        "@id": "gs1:countryOfOrigin",
+        "@type": "@id"
+      },
+      "gs1:additionalOrganizationID": {
+        "@id": "gs1:additionalOrganizationID",
+        "@type": "@id"
+      },
+      "gs1:certification": {
+        "@id": "gs1:certification",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "gs1:certificationURI": {
+        "@id": "gs1:certificationURI",
+        "@type": "@id"
+      },
+      "oec:isRegulationCompliant": {
+        "@id": "oec:isRegulationCompliant",
+        "@type": "xsd:boolean"
+      },
+      "eudr:hasTransformationLocation": {
+        "@id": "eudr:hasTransformationLocation",
+        "@type": "@id"
+      },
+      "eudr:hasDerivedFrom": {
+        "@id": "eudr:hasDerivedFrom",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "eudr:hasOriginDetails": {
+        "@id": "eudr:hasOriginDetails",
+        "@type": "@id"
+      },
+      "eudr:hasOriginList": {
+        "@id": "eudr:hasOriginList",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "eudr:hasCountryList": {
+        "@id": "eudr:hasCountryList",
+        "@container": "@set"
+      },
+      "eudr:hasAreaSize": {
+        "@id": "eudr:hasAreaSize",
+        "@type": "@id"
+      },
+      "eudr:hasProducerIdentification": {
+        "@id": "eudr:hasProducerIdentification",
+        "@type": "@id"
+      },
+      "gs1:value": {
+        "@id": "gs1:value",
+        "@type": "xsd:decimal"
+      },
+      "eudr:deforestationFreeDate": {
+        "@id": "eudr:deforestationFreeDate",
+        "@type": "xsd:date"
+      },
+      "eudr:legallyHarvested": {
+        "@id": "eudr:legallyHarvested",
+        "@type": "xsd:boolean"
+      },
+      "eudr:hasFscCertification": {
+        "@id": "eudr:hasFscCertification",
+        "@type": "@id"
+      },
+      "gs1:harvestDate": {
+        "@id": "gs1:harvestDate",
+        "@type": "xsd:date"
+      },
+      "gs1:harvestDateStart": {
+        "@id": "gs1:harvestDateStart",
+        "@type": "xsd:date"
+      },
+      "gs1:harvestDateEnd": {
+        "@id": "gs1:harvestDateEnd",
+        "@type": "xsd:date"
+      },
+      "eudr:transformationDate": {
+        "@id": "eudr:transformationDate",
+        "@type": "xsd:date"
+      },
+      "eudr:volumeCubicMeters": {
+        "@id": "eudr:volumeCubicMeters",
+        "@type": "xsd:decimal"
+      },
+      "eudr:areaHectares": {
+        "@id": "eudr:areaHectares",
+        "@type": "xsd:decimal"
+      },
+      "eudr:hasDueDiligenceStatement": {
+        "@id": "eudr:hasDueDiligenceStatement",
+        "@type": "@id"
+      },
+      "eudr:statementDate": {
+        "@id": "eudr:statementDate",
+        "@type": "xsd:date"
+      },
+      "eudr:hasRiskAssessment": {
+        "@id": "eudr:hasRiskAssessment",
+        "@type": "@id"
+      },
+      "eudr:riskAssessmentDate": {
+        "@id": "eudr:riskAssessmentDate",
+        "@type": "xsd:date"
+      },
+      "eudr:hasExemptionDeclaration": {
+        "@id": "eudr:hasExemptionDeclaration",
+        "@type": "@id"
+      },
+      "eudr:exemptionEffectiveFrom": {
+        "@id": "eudr:exemptionEffectiveFrom",
+        "@type": "xsd:date"
+      },
+      "eudr:exemptionEffectiveUntil": {
+        "@id": "eudr:exemptionEffectiveUntil",
+        "@type": "xsd:date"
+      },
+      "eudr:hasExemptionAuthority": {
+        "@id": "eudr:hasExemptionAuthority",
+        "@type": "@id"
+      }
+    }
+  ]
+}

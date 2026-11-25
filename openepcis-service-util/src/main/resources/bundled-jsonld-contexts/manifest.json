@@ -1,0 +1,54 @@
+[
+  {
+    "url": "https://ref.openepcis.org/extensions/common/assessment/assessment-context.jsonld",
+    "resource": "bundled-jsonld-contexts/common/assessment/assessment-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/common/core/dpp-core-context.jsonld",
+    "resource": "bundled-jsonld-contexts/common/core/dpp-core-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/common/core/gs1-shortcuts-scoped-context.jsonld",
+    "resource": "bundled-jsonld-contexts/common/core/gs1-shortcuts-scoped-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/common/interop/semic-core-bridge-context.jsonld",
+    "resource": "bundled-jsonld-contexts/common/interop/semic-core-bridge-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/eu/battery/battery-context.jsonld",
+    "resource": "bundled-jsonld-contexts/eu/battery/battery-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/eu/cpr/cpr-context.jsonld",
+    "resource": "bundled-jsonld-contexts/eu/cpr/cpr-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/eu/detergent/detergent-context.jsonld",
+    "resource": "bundled-jsonld-contexts/eu/detergent/detergent-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/eu/electronics/electronics-context.jsonld",
+    "resource": "bundled-jsonld-contexts/eu/electronics/electronics-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/eu/eudr/eudr-context.jsonld",
+    "resource": "bundled-jsonld-contexts/eu/eudr/eudr-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/eu/iron-steel/iron-steel-context.jsonld",
+    "resource": "bundled-jsonld-contexts/eu/iron-steel/iron-steel-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/eu/ppwr/ppwr-context.jsonld",
+    "resource": "bundled-jsonld-contexts/eu/ppwr/ppwr-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/eu/textile/textile-context.jsonld",
+    "resource": "bundled-jsonld-contexts/eu/textile/textile-context.jsonld"
+  },
+  {
+    "url": "https://ref.openepcis.org/extensions/us/fsma204/fsma204-context.jsonld",
+    "resource": "bundled-jsonld-contexts/us/fsma204/fsma204-context.jsonld"
+  }
+]
