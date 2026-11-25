@@ -27,6 +27,8 @@
 
     <artifactId>openepcis-service-util</artifactId>
 
+    <name>OpenEPCIS Service Util</name>
+
     <developers>
         <developer>
             <name>Sven Boeckelmann</name>

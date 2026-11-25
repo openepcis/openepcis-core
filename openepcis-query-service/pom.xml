@@ -26,6 +26,7 @@
         <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>openepcis-query-service</artifactId>
+    <name>OpenEPCIS Query Service</name>
 
     <developers>
         <developer>

@@ -26,6 +26,7 @@
         <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>openepcis-repository-api</artifactId>
+    <name>OpenEPCIS Repository API</name>
 
     <developers>
         <developer>

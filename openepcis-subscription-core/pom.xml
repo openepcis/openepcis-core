@@ -28,6 +28,8 @@
 
     <artifactId>openepcis-subscription-core</artifactId>
 
+    <name>OpenEPCIS Subscription Core</name>
+
     <developers>
         <developer>
             <name>Sven Boeckelmann</name>

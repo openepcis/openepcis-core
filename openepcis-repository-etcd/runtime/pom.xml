@@ -28,6 +28,8 @@
 
     <artifactId>openepcis-repository-etcd</artifactId>
 
+    <name>OpenEPCIS Repository etcd</name>
+
     <developers>
         <developer>
             <name>Sven Boeckelmann</name>

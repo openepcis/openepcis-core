@@ -25,6 +25,7 @@
     <version>999-SNAPSHOT</version>
   </parent>
   <artifactId>openepcis-validation-service</artifactId>
+  <name>OpenEPCIS Validation Service</name>
 
     <developers>
         <developer>

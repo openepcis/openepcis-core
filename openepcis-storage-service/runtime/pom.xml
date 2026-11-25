@@ -28,6 +28,8 @@
 
     <artifactId>openepcis-storage-service</artifactId>
 
+    <name>OpenEPCIS Storage Service</name>
+
     <developers>
         <developer>
             <name>Sven Boeckelmann</name>

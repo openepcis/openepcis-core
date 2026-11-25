@@ -28,6 +28,8 @@
 
     <artifactId>openepcis-repository-opensearch</artifactId>
 
+    <name>OpenEPCIS Repository OpenSearch</name>
+
     <developers>
         <developer>
             <name>Sven Boeckelmann</name>

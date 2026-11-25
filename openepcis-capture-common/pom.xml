@@ -25,6 +25,7 @@
     <version>999-SNAPSHOT</version>
   </parent>
   <artifactId>openepcis-capture-common</artifactId>
+  <name>OpenEPCIS Capture Common</name>
 
     <developers>
         <developer>

@@ -26,6 +26,7 @@
         <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>openepcis-capture-kafka-core</artifactId>
+    <name>OpenEPCIS Capture Kafka Core</name>
 
     <developers>
         <developer>
