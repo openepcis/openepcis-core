@@ -164,10 +164,6 @@
             <groupId>io.openepcis</groupId>
             <artifactId>openepcis-service-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.openepcis</groupId>
-            <artifactId>openepcis-keyvalue-repository</artifactId>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
