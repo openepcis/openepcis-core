@@ -57,6 +57,14 @@ class JsonLDUtilBundledContextTest {
   @DisplayName("each GS1 context URL is served in its own version, with its own gs1 prefix")
   void gs1PrefixFollowsTheVersion() throws Exception {
     final JsonLDUtil util = new JsonLDUtil();
+    for (final String url :
+        new String[] {
+          "https://ref.gs1.org/standards/epcis/epcis-context.jsonld",
+          "https://ref.gs1.org/standards/epcis/2.0.1/epcis-context.jsonld",
+          "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
+        }) {
+      assertTrue(JsonLDUtil.isBundled(url), url);
+    }
     assertEquals("https://ref.gs1.org/voc/", gs1Prefix(util, "https://ref.gs1.org/standards/epcis/epcis-context.jsonld"));
     assertEquals("https://ref.gs1.org/voc/", gs1Prefix(util, "https://ref.gs1.org/standards/epcis/2.0.1/epcis-context.jsonld"));
     assertEquals("https://gs1.org/voc/", gs1Prefix(util, "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"));
@@ -99,6 +107,8 @@ class JsonLDUtilBundledContextTest {
     for (final jakarta.json.JsonValue entry : manifest) {
       final String url = entry.asJsonObject().getString("url");
       assertTrue(!url.contains("benetag"), url);
+      // served from the jar, not merely reachable: the loader falls back to the network otherwise
+      assertTrue(JsonLDUtil.isBundled(url), url);
       final byte[] context = util.loadDocumentBytes(URI.create(url), new DocumentLoaderOptions());
       assertTrue(Json.createReader(new ByteArrayInputStream(context)).readObject().containsKey("@context"), url);
     }
@@ -129,5 +139,22 @@ class JsonLDUtilBundledContextTest {
     assertTrue(json.contains("https://ref.openepcis.org/extensions/eu/battery/stateOfHealth"), json);
     // inside the master data GS1 is the ambient vocabulary
     assertTrue(json.contains("https://ref.gs1.org/voc/countryOfOrigin"), json);
+  }
+
+  @Test
+  @DisplayName("a context that failed to load is not requested again right away")
+  void failedContextIsNotRetriedAtOnce() {
+    final JsonLDUtil util = new JsonLDUtil();
+    final URI missing = URI.create("file:///nonexistent/openepcis-test/missing-context.jsonld");
+    final com.apicatalog.jsonld.JsonLdError first =
+        org.junit.jupiter.api.Assertions.assertThrows(
+            com.apicatalog.jsonld.JsonLdError.class,
+            () -> util.loadDocumentBytes(missing, new DocumentLoaderOptions()));
+    final com.apicatalog.jsonld.JsonLdError second =
+        org.junit.jupiter.api.Assertions.assertThrows(
+            com.apicatalog.jsonld.JsonLdError.class,
+            () -> util.loadDocumentBytes(missing, new DocumentLoaderOptions()));
+    assertTrue(!String.valueOf(first.getMessage()).contains("failed recently"), first.getMessage());
+    assertTrue(String.valueOf(second.getMessage()).contains("failed recently"), second.getMessage());
   }
 }

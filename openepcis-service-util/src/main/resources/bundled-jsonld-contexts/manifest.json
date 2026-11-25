@@ -8,219 +8,47 @@
     "resource": "bundled-jsonld-contexts/common/core/dpp-core-context.jsonld"
   },
   {
-    "url": "https://ref.openepcis.org/extensions/common/core/dpp-core-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/core/dpp-core-shortcut-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/core/dpp-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/common/core/dpp-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/core/dpp-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/core/dpp-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/core/gs1-shortcuts-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/core/gs1-shortcuts-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/interop/cirpass2-bridge-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/interop/cirpass2-bridge-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/interop/dpp-keystone-bridge-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/interop/dpp-keystone-bridge-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/interop/jtc24-bridge-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/interop/jtc24-bridge-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/interop/mvp-textile-bridge-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/interop/mvp-textile-bridge-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/interop/rail-bridge-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/interop/rail-bridge-context.jsonld"
+    "url": "https://ref.openepcis.org/extensions/common/core/gs1-shortcuts-scoped-context.jsonld",
+    "resource": "bundled-jsonld-contexts/common/core/gs1-shortcuts-scoped-context.jsonld"
   },
   {
     "url": "https://ref.openepcis.org/extensions/common/interop/semic-core-bridge-context.jsonld",
     "resource": "bundled-jsonld-contexts/common/interop/semic-core-bridge-context.jsonld"
   },
   {
-    "url": "https://ref.openepcis.org/extensions/common/interop/untp-0.7.0-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/interop/untp-0.7.0-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/common/interop/untp-bridge-context.jsonld",
-    "resource": "bundled-jsonld-contexts/common/interop/untp-bridge-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/battery/battery-context-batterypass-bridge.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/battery/battery-context-batterypass-bridge.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/battery/battery-context-scientific.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/battery/battery-context-scientific.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/battery/battery-context-to-batterypass.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/battery/battery-context-to-batterypass.jsonld"
-  },
-  {
     "url": "https://ref.openepcis.org/extensions/eu/battery/battery-context.jsonld",
     "resource": "bundled-jsonld-contexts/eu/battery/battery-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/battery/battery-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/battery/battery-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/battery/battery-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/battery/battery-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/battery/battery-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/battery/battery-shortcut-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/battery/batterypass-ready-2.0.1-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/battery/batterypass-ready-2.0.1-context.jsonld"
   },
   {
     "url": "https://ref.openepcis.org/extensions/eu/cpr/cpr-context.jsonld",
     "resource": "bundled-jsonld-contexts/eu/cpr/cpr-context.jsonld"
   },
   {
-    "url": "https://ref.openepcis.org/extensions/eu/cpr/cpr-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/cpr/cpr-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/cpr/cpr-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/cpr/cpr-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/cpr/cpr-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/cpr/cpr-shortcut-context.jsonld"
-  },
-  {
     "url": "https://ref.openepcis.org/extensions/eu/detergent/detergent-context.jsonld",
     "resource": "bundled-jsonld-contexts/eu/detergent/detergent-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/detergent/detergent-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/detergent/detergent-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/detergent/detergent-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/detergent/detergent-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/detergent/detergent-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/detergent/detergent-shortcut-context.jsonld"
   },
   {
     "url": "https://ref.openepcis.org/extensions/eu/electronics/electronics-context.jsonld",
     "resource": "bundled-jsonld-contexts/eu/electronics/electronics-context.jsonld"
   },
   {
-    "url": "https://ref.openepcis.org/extensions/eu/electronics/electronics-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/electronics/electronics-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/electronics/electronics-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/electronics/electronics-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/electronics/electronics-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/electronics/electronics-shortcut-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/electronics/electronics-untp-bridge.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/electronics/electronics-untp-bridge.jsonld"
-  },
-  {
     "url": "https://ref.openepcis.org/extensions/eu/eudr/eudr-context.jsonld",
     "resource": "bundled-jsonld-contexts/eu/eudr/eudr-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/eudr/eudr-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/eudr/eudr-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/eudr/eudr-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/eudr/eudr-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/eudr/eudr-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/eudr/eudr-shortcut-context.jsonld"
   },
   {
     "url": "https://ref.openepcis.org/extensions/eu/iron-steel/iron-steel-context.jsonld",
     "resource": "bundled-jsonld-contexts/eu/iron-steel/iron-steel-context.jsonld"
   },
   {
-    "url": "https://ref.openepcis.org/extensions/eu/iron-steel/iron-steel-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/iron-steel/iron-steel-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/iron-steel/iron-steel-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/iron-steel/iron-steel-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/iron-steel/iron-steel-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/iron-steel/iron-steel-shortcut-context.jsonld"
-  },
-  {
     "url": "https://ref.openepcis.org/extensions/eu/ppwr/ppwr-context.jsonld",
     "resource": "bundled-jsonld-contexts/eu/ppwr/ppwr-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/ppwr/ppwr-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/ppwr/ppwr-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/ppwr/ppwr-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/ppwr/ppwr-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/ppwr/ppwr-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/ppwr/ppwr-shortcut-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/textile/textile-context-pefcr-bridge.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/textile/textile-context-pefcr-bridge.jsonld"
   },
   {
     "url": "https://ref.openepcis.org/extensions/eu/textile/textile-context.jsonld",
     "resource": "bundled-jsonld-contexts/eu/textile/textile-context.jsonld"
   },
   {
-    "url": "https://ref.openepcis.org/extensions/eu/textile/textile-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/textile/textile-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/textile/textile-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/textile/textile-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/eu/textile/textile-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/eu/textile/textile-shortcut-context.jsonld"
-  },
-  {
     "url": "https://ref.openepcis.org/extensions/us/fsma204/fsma204-context.jsonld",
     "resource": "bundled-jsonld-contexts/us/fsma204/fsma204-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/us/fsma204/fsma204-operational-bundle.jsonld",
-    "resource": "bundled-jsonld-contexts/us/fsma204/fsma204-operational-bundle.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/us/fsma204/fsma204-operational-context.jsonld",
-    "resource": "bundled-jsonld-contexts/us/fsma204/fsma204-operational-context.jsonld"
-  },
-  {
-    "url": "https://ref.openepcis.org/extensions/us/fsma204/fsma204-shortcut-context.jsonld",
-    "resource": "bundled-jsonld-contexts/us/fsma204/fsma204-shortcut-context.jsonld"
   }
 ]

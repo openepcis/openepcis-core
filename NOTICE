@@ -3,3 +3,9 @@ Copyright 2022-2026 benelog GmbH & Co. KG
 
 This product includes software developed by benelog GmbH & Co. KG
 (https://www.benelog.com) for the OpenEPCIS project (https://openepcis.io).
+
+openepcis-service-util includes the GS1 EPCIS JSON-LD contexts 2.0.0 and 2.0.1
+(epcis-context-2.0.0.jsonld, epcis-context-2.0.1.jsonld), published by GS1 AISBL
+at https://ref.gs1.org/standards/epcis/ and provided "as is" under the terms at
+https://github.com/gs1/EPCIS/blob/master/LICENSE. GS1 is a registered trademark
+of GS1 AISBL.

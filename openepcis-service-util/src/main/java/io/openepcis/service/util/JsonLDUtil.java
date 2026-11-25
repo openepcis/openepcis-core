@@ -73,14 +73,22 @@ public class JsonLDUtil {
           JsonLDUtil.class.getClassLoader().getResources(BUNDLED_CONTEXTS_MANIFEST);
       while (manifests.hasMoreElements()) {
         final java.net.URL manifest = manifests.nextElement();
+        final jakarta.json.JsonArray entries;
         try (InputStream in = manifest.openStream();
             jakarta.json.JsonReader reader = jakarta.json.Json.createReader(in)) {
-          for (final jakarta.json.JsonValue entry : reader.readArray()) {
-            final JsonObject context = entry.asJsonObject();
-            contexts.putIfAbsent(context.getString("url"), "/" + context.getString("resource"));
-          }
+          entries = reader.readArray();
         } catch (java.io.IOException | RuntimeException e) {
           log.warn("Bundled JSON-LD context manifest {} not readable, its contexts are loaded from the network: {}", manifest, e.toString());
+          continue;
+        }
+        // entry by entry: a malformed one costs only itself
+        for (final jakarta.json.JsonValue entry : entries) {
+          try {
+            final JsonObject context = entry.asJsonObject();
+            contexts.putIfAbsent(context.getString("url"), "/" + context.getString("resource"));
+          } catch (RuntimeException e) {
+            log.warn("Skipping malformed entry {} of the bundled JSON-LD context manifest {}", entry, manifest);
+          }
         }
       }
     } catch (java.io.IOException e) {
@@ -88,6 +96,22 @@ public class JsonLDUtil {
     }
     return Map.copyOf(contexts);
   }
+
+  /** Whether the context at this URL is served from the classpath. */
+  static boolean isBundled(final String url) {
+    return jsonLDSchemaMap.containsKey(url);
+  }
+
+  /** How long a context that failed to load is not requested again. */
+  private static final long FAILED_CONTEXT_RETRY_MILLIS = 60_000;
+
+  /**
+   * Remote contexts that failed to load, with the time they may be tried again. Expansion is
+   * serialised (EXPAND_LOCK), so without it every capture naming an unreachable context would
+   * wait for that context again.
+   */
+  private final java.util.concurrent.ConcurrentMap<String, Long> failedContexts =
+      new java.util.concurrent.ConcurrentHashMap<>();
 
   /** Bounds the in-memory copy of remote contexts; a context is small and documents name few. */
   private static final int MAX_CACHED_CONTEXTS = 256;
@@ -124,12 +148,21 @@ public class JsonLDUtil {
     if (cached != null) {
       return cached;
     }
+    final Long retryAt = failedContexts.get(key);
+    if (retryAt != null) {
+      if (System.currentTimeMillis() < retryAt) {
+        throw new JsonLdError(JsonLdErrorCode.LOADING_DOCUMENT_FAILED, "loading " + key + " failed recently, not tried again yet");
+      }
+      failedContexts.remove(key);
+    }
     final byte[] loaded;
     try {
       loaded = fetchDocumentBytes(uri, documentLoaderOptions);
     } catch (JsonLdError e) {
-      // Titanium replaces this error by one without a cause, so this is the only place it is seen
-      log.warn("Loading the JSON-LD context {} failed: {}", uri, rootCauseMessage(e), e);
+      // the cause reaches the expansion warning through Titanium's error chain
+      if (failedContexts.size() < MAX_CACHED_CONTEXTS) {
+        failedContexts.put(key, System.currentTimeMillis() + FAILED_CONTEXT_RETRY_MILLIS);
+      }
       throw e;
     }
     if (contextCache.size() < MAX_CACHED_CONTEXTS) {
@@ -181,11 +214,14 @@ public class JsonLDUtil {
   /** The message chain down to the root cause: Titanium wraps every loader failure alike. */
   private static String rootCauseMessage(final Throwable error) {
     final StringBuilder message = new StringBuilder(String.valueOf(error.getMessage()));
-    for (Throwable cause = error.getCause(); cause != null && cause != cause.getCause(); cause = cause.getCause()) {
+    // bounded: a cause chain can loop
+    int depth = 0;
+    for (Throwable cause = error.getCause(); cause != null && cause != error && depth < 10; cause = cause.getCause(), depth++) {
       message.append(" <- ").append(cause);
     }
     return message.toString();
   }
+
 
   public Uni<JsonObject> expandJsonLDDocument(final String captureString) {
     return Uni.createFrom().<JsonObject>emitter(em -> {
