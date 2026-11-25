@@ -28,6 +28,8 @@
 
     <artifactId>openepcis-keyvalue-repository</artifactId>
 
+    <name>OpenEPCIS Key-Value Repository</name>
+
     <developers>
         <developer>
             <name>Sven Boeckelmann</name>

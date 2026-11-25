@@ -25,6 +25,7 @@
     <version>999-SNAPSHOT</version>
   </parent>
   <artifactId>openepcis-custom-extension-service</artifactId>
+  <name>OpenEPCIS Custom Extension Service</name>
 
     <developers>
         <developer>

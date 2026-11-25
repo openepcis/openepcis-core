@@ -27,6 +27,8 @@
 
     <artifactId>openepcis-s3-service</artifactId>
 
+    <name>OpenEPCIS S3 Service</name>
+
     <developers>
         <developer>
             <name>Sven Boeckelmann</name>

@@ -35,6 +35,8 @@
     </developers>
 
     <artifactId>openepcis-query-subscription</artifactId>
+
+    <name>OpenEPCIS Query Subscription</name>
     <dependencies>
         <dependency>
             <groupId>io.openepcis</groupId>

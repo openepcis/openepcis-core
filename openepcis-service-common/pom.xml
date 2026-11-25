@@ -26,6 +26,7 @@
         <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>openepcis-service-common</artifactId>
+    <name>OpenEPCIS Service Common</name>
 
     <developers>
         <developer>

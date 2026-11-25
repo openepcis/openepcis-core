@@ -27,6 +27,7 @@
     </parent>
     <packaging>pom</packaging>
     <artifactId>openepcis-repository-opensearch-parent</artifactId>
+    <name>OpenEPCIS Repository OpenSearch Parent</name>
 
     <developers>
         <developer>

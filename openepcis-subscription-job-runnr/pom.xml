@@ -26,6 +26,7 @@
         <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>openepcis-subscription-job-runnr</artifactId>
+    <name>OpenEPCIS Subscription Job Runner</name>
 
     <developers>
         <developer>
