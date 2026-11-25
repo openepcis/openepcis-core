@@ -23,7 +23,7 @@
     <parent>
         <groupId>io.openepcis</groupId>
         <artifactId>openepcis-core</artifactId>
-        <version>999-SNAPSHOT</version>
+        <version>0.9.4</version>
     </parent>
     <artifactId>openepcis-capture-kafka-core</artifactId>
     <name>OpenEPCIS Capture Kafka Core</name>
