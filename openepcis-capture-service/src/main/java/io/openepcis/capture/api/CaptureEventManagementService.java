@@ -58,14 +58,21 @@ public interface CaptureEventManagementService {
         .collect(Collectors.toCollection(HashSet::new));
   }
 
+  // The range the capture services accept together, from each one's own range: the version a
+  // service reads by default (getEPCISVersion) is not its upper bound (JSON reads 2.0.0 by default
+  // and accepts 2.0.1), and OPTIONS answered GS1-EPCIS-Max 2.0.0 while queries answered 2.0.1.
   default EPCISVersion getEPCISVersionMin() {
-    final List<EPCISVersion> versions = getEPCISVersions();
-    return versions.get(0);
+    return getCaptureEventServices()
+        .map(CaptureEventService::getEPCISVersionMin)
+        .min(java.util.Comparator.naturalOrder())
+        .orElseGet(() -> getEPCISVersions().get(0));
   }
 
   default EPCISVersion getEPCISVersionMax() {
-    final List<EPCISVersion> versions = getEPCISVersions();
-    return versions.get(versions.size() - 1);
+    return getCaptureEventServices()
+        .map(CaptureEventService::getEPCISVersionMax)
+        .max(java.util.Comparator.naturalOrder())
+        .orElseGet(() -> getEPCISVersions().get(getEPCISVersions().size() - 1));
   }
 
   default EPCISVersion getEPCISVersion() {
