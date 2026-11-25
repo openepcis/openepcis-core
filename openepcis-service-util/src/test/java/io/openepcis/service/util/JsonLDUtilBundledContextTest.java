@@ -105,11 +105,9 @@ class JsonLDUtilBundledContextTest {
   }
 
   @Test
-  @org.junit.jupiter.api.Disabled(
-      "dpp-core-context scopes gs1-shortcuts-context under gs1:masterDataAvailableFor, which redefines"
-          + " epcis, masterData and certificationInfo of the protected GS1 context. JSON-LD 1.1 allows a"
-          + " property-scoped context to do that and jsonld.js accepts it, Titanium (1.4.1 to 1.7.0) does not"
-          + " pass override-protected on to a remote scoped context. Enable once the contexts avoid the clash.")
+  // dpp-core-context names gs1-shortcuts-context as a remote scoped context; JSON-LD 1.1 processes
+  // that without override-protected, so it must not redefine a term of the protected GS1 context
+  // (openepcis-dpp-ready#37). Fails on the contexts before that fix.
   @DisplayName("a battery event with the contexts of ref.openepcis.org expands from the jar")
   void batteryEventWithRefContexts() throws Exception {
     final JsonLDUtil util = new JsonLDUtil();
@@ -123,8 +121,13 @@ class JsonLDUtilBundledContextTest {
             + "\"type\":\"EPCISDocument\",\"schemaVersion\":\"2.0\",\"creationDate\":\"2026-11-25T00:00:00.000Z\","
             + "\"epcisBody\":{\"eventList\":[{\"type\":\"ObjectEvent\",\"eventTime\":\"2026-11-25T00:00:00.000Z\","
             + "\"eventTimeZoneOffset\":\"+00:00\",\"epcList\":[\"https://id.example.com/01/09521234000013/21/1\"],"
-            + "\"action\":\"ADD\",\"eubat:stateOfHealth\":97}]}}";
+            + "\"action\":\"ADD\",\"eubat:stateOfHealth\":97,"
+            + "\"gs1:masterDataAvailableFor\":[{\"id\":\"https://id.gs1.org/01/09521234000013\",\"type\":\"Product\","
+            + "\"countryOfOrigin\":{\"countryCode\":\"DE\"}}]}]}}";
     final JsonObject expanded = util.expandJsonLDDocument(document).await().atMost(Duration.ofSeconds(30));
-    assertTrue(expanded.toString().contains("https://ref.openepcis.org/extensions/eu/battery/stateOfHealth"), expanded.toString());
+    final String json = expanded.toString();
+    assertTrue(json.contains("https://ref.openepcis.org/extensions/eu/battery/stateOfHealth"), json);
+    // inside the master data GS1 is the ambient vocabulary
+    assertTrue(json.contains("https://ref.gs1.org/voc/countryOfOrigin"), json);
   }
 }
