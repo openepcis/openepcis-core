@@ -1,0 +1,190 @@
+{
+  "_comment": "OpenEPCIS Electronics Vocabulary v0.15.1, generated from extensions/eu/electronics/ontology/electronics.ttl. Do not edit by hand; re-run `pnpm run build:context` and edit extensions/eu/electronics/context/.context-overrides.json for non-derivable hints.",
+  "@context": [
+    "https://ref.openepcis.org/extensions/common/core/dpp-core-context.jsonld",
+    {
+      "@version": 1.1,
+      "id": "@id",
+      "type": "@type",
+      "euelec": "https://ref.openepcis.org/extensions/eu/electronics/",
+      "gs1": "https://ref.gs1.org/voc/",
+      "oea": "https://ref.openepcis.org/extensions/common/assessment/",
+      "oec": "https://ref.openepcis.org/extensions/common/core/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "euelec:hasRepairabilityIndex": {
+        "@id": "euelec:hasRepairabilityIndex",
+        "@type": "@id"
+      },
+      "euelec:repairabilityLabelUrl": {
+        "@id": "euelec:repairabilityLabelUrl",
+        "@type": "xsd:anyURI"
+      },
+      "euelec:hasSoftwareSupport": {
+        "@id": "euelec:hasSoftwareSupport",
+        "@type": "@id"
+      },
+      "euelec:securityUpdateEndDate": {
+        "@id": "euelec:securityUpdateEndDate",
+        "@type": "xsd:date"
+      },
+      "euelec:featureUpdateEndDate": {
+        "@id": "euelec:featureUpdateEndDate",
+        "@type": "xsd:date"
+      },
+      "euelec:hasSecuritySupportYears": {
+        "@id": "euelec:hasSecuritySupportYears",
+        "@type": "@id"
+      },
+      "euelec:hasFeatureSupportYears": {
+        "@id": "euelec:hasFeatureSupportYears",
+        "@type": "@id"
+      },
+      "euelec:updateChannel": {
+        "@id": "euelec:updateChannel",
+        "@type": "xsd:anyURI"
+      },
+      "euelec:latestUpdateDate": {
+        "@id": "euelec:latestUpdateDate",
+        "@type": "xsd:date"
+      },
+      "euelec:hasEnergyEfficiency": {
+        "@id": "euelec:hasEnergyEfficiency",
+        "@type": "@id"
+      },
+      "euelec:hasAnnualEnergyConsumption": {
+        "@id": "euelec:hasAnnualEnergyConsumption",
+        "@type": "@id"
+      },
+      "euelec:hasPowerConsumptionOn": {
+        "@id": "euelec:hasPowerConsumptionOn",
+        "@type": "@id"
+      },
+      "euelec:hasPowerConsumptionStandby": {
+        "@id": "euelec:hasPowerConsumptionStandby",
+        "@type": "@id"
+      },
+      "euelec:hasPowerConsumptionOff": {
+        "@id": "euelec:hasPowerConsumptionOff",
+        "@type": "@id"
+      },
+      "euelec:energyLabelUrl": {
+        "@id": "euelec:energyLabelUrl",
+        "@type": "xsd:anyURI"
+      },
+      "euelec:eprelProductUrl": {
+        "@id": "euelec:eprelProductUrl",
+        "@type": "xsd:anyURI"
+      },
+      "euelec:hasBillOfMaterials": {
+        "@id": "euelec:hasBillOfMaterials",
+        "@type": "@id"
+      },
+      "euelec:hasComponents": {
+        "@id": "euelec:hasComponents",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "gs1:manufacturer": {
+        "@id": "gs1:manufacturer",
+        "@type": "@id"
+      },
+      "euelec:isReplaceable": {
+        "@id": "euelec:isReplaceable",
+        "@type": "xsd:boolean"
+      },
+      "euelec:hasComponentPassport": {
+        "@id": "euelec:hasComponentPassport",
+        "@type": "@id"
+      },
+      "euelec:hasSparePartAvailabilityYears": {
+        "@id": "euelec:hasSparePartAvailabilityYears",
+        "@type": "@id"
+      },
+      "euelec:hasSparePartPrice": {
+        "@id": "euelec:hasSparePartPrice",
+        "@type": "@id"
+      },
+      "euelec:hasWeeeCompliance": {
+        "@id": "euelec:hasWeeeCompliance",
+        "@type": "@id"
+      },
+      "euelec:collectionSchemeUrl": {
+        "@id": "euelec:collectionSchemeUrl",
+        "@type": "xsd:anyURI"
+      },
+      "euelec:hasRohsCompliance": {
+        "@id": "euelec:hasRohsCompliance",
+        "@type": "@id"
+      },
+      "euelec:rohsCompliant": {
+        "@id": "euelec:rohsCompliant",
+        "@type": "xsd:boolean"
+      },
+      "euelec:rohsDeclarationUrl": {
+        "@id": "euelec:rohsDeclarationUrl",
+        "@type": "xsd:anyURI"
+      },
+      "euelec:hasDisplaySpecification": {
+        "@id": "euelec:hasDisplaySpecification",
+        "@type": "@id"
+      },
+      "euelec:hasScreenDiagonal": {
+        "@id": "euelec:hasScreenDiagonal",
+        "@type": "@id"
+      },
+      "euelec:screenResolutionWidth": {
+        "@id": "euelec:screenResolutionWidth",
+        "@type": "xsd:integer"
+      },
+      "euelec:screenResolutionHeight": {
+        "@id": "euelec:screenResolutionHeight",
+        "@type": "xsd:integer"
+      },
+      "euelec:hasRefreshRate": {
+        "@id": "euelec:hasRefreshRate",
+        "@type": "@id"
+      },
+      "euelec:hasPeakBrightness": {
+        "@id": "euelec:hasPeakBrightness",
+        "@type": "@id"
+      },
+      "euelec:hasSoftwareUpdateEvent": {
+        "@id": "euelec:hasSoftwareUpdateEvent",
+        "@type": "@id"
+      },
+      "euelec:hasMaterialDeclaration": {
+        "@id": "euelec:hasMaterialDeclaration",
+        "@type": "@id"
+      },
+      "euelec:materialDeclarationDate": {
+        "@id": "euelec:materialDeclarationDate",
+        "@type": "xsd:date"
+      },
+      "gs1:value": {
+        "@id": "gs1:value",
+        "@type": "xsd:decimal"
+      },
+      "gs1:price": {
+        "@id": "gs1:price",
+        "@type": "xsd:decimal"
+      },
+      "gs1:brand": {
+        "@id": "gs1:brand",
+        "@type": "@id"
+      },
+      "gs1:productionDate": {
+        "@id": "gs1:productionDate",
+        "@type": "xsd:date"
+      },
+      "gs1:netWeight": {
+        "@id": "gs1:netWeight",
+        "@type": "@id"
+      },
+      "gs1:grossWeight": {
+        "@id": "gs1:grossWeight",
+        "@type": "@id"
+      }
+    }
+  ]
+}

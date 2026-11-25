@@ -1,0 +1,100 @@
+{
+  "_comment": "OpenEPCIS Detergent Vocabulary v0.15.1, generated from extensions/eu/detergent/ontology/detergent.ttl. Do not edit by hand; re-run `pnpm run build:context` and edit extensions/eu/detergent/context/.context-overrides.json for non-derivable hints.",
+  "@context": [
+    "https://ref.openepcis.org/extensions/common/core/dpp-core-context.jsonld",
+    {
+      "@version": 1.1,
+      "id": "@id",
+      "type": "@type",
+      "eudet": "https://ref.openepcis.org/extensions/eu/detergent/",
+      "gs1": "https://ref.gs1.org/voc/",
+      "oec": "https://ref.openepcis.org/extensions/common/core/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "gs1:manufacturer": {
+        "@id": "gs1:manufacturer",
+        "@type": "@id"
+      },
+      "gs1:address": {
+        "@id": "gs1:address",
+        "@type": "@id"
+      },
+      "gs1:countryOfOrigin": {
+        "@id": "gs1:countryOfOrigin",
+        "@type": "@id"
+      },
+      "gs1:netWeight": {
+        "@id": "gs1:netWeight",
+        "@type": "@id"
+      },
+      "gs1:netContent": {
+        "@id": "gs1:netContent",
+        "@type": "@id"
+      },
+      "eudet:hasIngredientList": {
+        "@id": "eudet:hasIngredientList",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "eudet:hasSurfactantBiodegradability": {
+        "@id": "eudet:hasSurfactantBiodegradability",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "eudet:hasFragranceAllergens": {
+        "@id": "eudet:hasFragranceAllergens",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "eudet:hasMicroorganisms": {
+        "@id": "eudet:hasMicroorganisms",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "eudet:hasHazardousSubstances": {
+        "@id": "eudet:hasHazardousSubstances",
+        "@type": "@id",
+        "@container": "@set"
+      },
+      "eudet:hazardPictograms": {
+        "@id": "eudet:hazardPictograms",
+        "@container": "@set"
+      },
+      "eudet:hStatements": {
+        "@id": "eudet:hStatements",
+        "@container": "@set"
+      },
+      "eudet:pStatements": {
+        "@id": "eudet:pStatements",
+        "@container": "@set"
+      },
+      "eudet:phosphorusContentPercent": {
+        "@id": "eudet:phosphorusContentPercent",
+        "@type": "xsd:decimal"
+      },
+      "eudet:hasRecommendedDosage": {
+        "@id": "eudet:hasRecommendedDosage",
+        "@type": "@id"
+      },
+      "eudet:hasSafetyDataSheet": {
+        "@id": "eudet:hasSafetyDataSheet",
+        "@type": "@id"
+      },
+      "eudet:hasBiodegradabilityTestReport": {
+        "@id": "eudet:hasBiodegradabilityTestReport",
+        "@type": "@id"
+      },
+      "eudet:isSurfactant": {
+        "@id": "eudet:isSurfactant",
+        "@type": "xsd:boolean"
+      },
+      "eudet:allergenConcentration": {
+        "@id": "eudet:allergenConcentration",
+        "@type": "xsd:decimal"
+      },
+      "gs1:value": {
+        "@id": "gs1:value",
+        "@type": "xsd:decimal"
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "oec": "https://ref.openepcis.org/extensions/common/core/",
+    "gs1": "https://ref.gs1.org/voc/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "UniqueProductIdentifier": "gs1:productID",
+    "PassportIdentifier": "oec:passportIdentifier",
+    "PassportVersion": "oec:passportVersion",
+    "productIdentifier": "gs1:productID",
+    "productModel": "schema:ProductModel",
+    "productCategory": "oec:hasProductCategory",
+    "passportIdentifier": "oec:passportIdentifier",
+    "passportVersion": "oec:passportVersion",
+    "productName": "gs1:productName",
+    "gtin": "gs1:gtin",
+    "OperatorInformation": "oec:OperatorInformation",
+    "manufacturerName": "gs1:organizationName",
+    "operatorId": "oec:economicOperatorId",
+    "economicOperatorId": "oec:economicOperatorId",
+    "operatorRole": {
+      "@id": "oec:hasOperatorRole",
+      "@type": "@id"
+    },
+    "contactInformation": {
+      "@id": "gs1:contactPoint",
+      "@type": "@id"
+    },
+    "FacilityInformation": "oec:FacilityInformation",
+    "facilityIdentifier": "gs1:globalLocationNumber",
+    "facilityName": "schema:name",
+    "facilityAddress": {
+      "@id": "gs1:address",
+      "@type": "@id"
+    },
+    "facilityCertifications": {
+      "@id": "oec:hasFacilityCertifications",
+      "@type": "@id"
+    },
+    "facilityType": {
+      "@id": "oec:facilityType",
+      "@type": "@id"
+    },
+    "MaterialComposition": "oec:MaterialComposition",
+    "materialName": "schema:name",
+    "massFraction": {
+      "@id": "oec:massFraction",
+      "@type": "xsd:decimal"
+    },
+    "sourceCountry": "gs1:countryOfOrigin",
+    "casNumber": "oec:casNumber",
+    "ecNumber": "oec:ecNumber",
+    "isCriticalRawMaterial": {
+      "@id": "oec:isCriticalRawMaterial",
+      "@type": "xsd:boolean"
+    },
+    "SubstanceOfConcern": "oec:SubstanceOfConcern",
+    "scipId": "oec:scipId",
+    "hazardClass": {
+      "@id": "oec:hasHazardClass",
+      "@type": "@id"
+    },
+    "concentration": {
+      "@id": "oec:concentration",
+      "@type": "xsd:decimal"
+    },
+    "substanceLocation": {
+      "@id": "oec:substanceLocation",
+      "@type": "@id"
+    },
+    "safeUseInstructions": "oec:safeUseInstructions",
+    "safeDisassemblyInstructions": "oec:safeDisassemblyInstructions",
+    "carbonFootprintTotal": {
+      "@id": "oec:carbonFootprintTotal",
+      "@type": "xsd:decimal"
+    },
+    "declaredUnit": "oec:declaredUnit",
+    "operationalScope": {
+      "@id": "oec:hasOperationalScope",
+      "@type": "@id"
+    },
+    "primarySourcedRatio": {
+      "@id": "oec:primarySourcedRatio",
+      "@type": "xsd:decimal"
+    },
+    "carbonFootprintStudyUrl": {
+      "@id": "oec:carbonFootprintStudyUrl",
+      "@type": "@id"
+    },
+    "CircularityPerformance": "oec:CircularityPerformance",
+    "recycledContent": {
+      "@id": "oec:recycledContent",
+      "@type": "xsd:decimal"
+    },
+    "preConsumerRecycledContent": {
+      "@id": "oec:preConsumerRecycledContent",
+      "@type": "xsd:decimal"
+    },
+    "postConsumerRecycledContent": {
+      "@id": "oec:postConsumerRecycledContent",
+      "@type": "xsd:decimal"
+    },
+    "endOfLifeInstructions": "oec:endOfLifeInstructions",
+    "dismantlingInstructions": "oec:hasDismantlingInstructions",
+    "RepairabilityInfo": "oec:RepairabilityInfo",
+    "sparePartsAvailability": "oec:hasSparePartsAvailability",
+    "sparePartsDeliveryTime": "schema:deliveryTime",
+    "repairInstructions": {
+      "@id": "oec:hasRepairInstructions",
+      "@type": "@id"
+    },
+    "diyRepairPossible": {
+      "@id": "oec:diyRepairPossible",
+      "@type": "xsd:boolean"
+    },
+    "PerformanceInfo": "oec:PerformanceInfo",
+    "guaranteedLifespan": "oec:hasGuaranteedLifespan",
+    "AccessRights": "oec:AccessRights",
+    "accessLevel": {
+      "@id": "oec:hasAccessLevel",
+      "@type": "@id"
+    },
+    "Public": "oec:Public",
+    "AuthorizedOnly": "oec:AuthorizedOnly",
+    "Restricted": "oec:Restricted"
+  }
+}

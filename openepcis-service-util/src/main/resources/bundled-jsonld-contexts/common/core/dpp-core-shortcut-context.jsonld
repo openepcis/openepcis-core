@@ -1,0 +1,1334 @@
+{
+  "_comment": "Generated bare-term shortcut aliases for dpp-core. Do not edit by hand; re-run `pnpm run build:context` and edit the sibling .shortcut-overrides.json (or .gs1-shortcuts-overrides.json) for curated aliases. Only the operational contexts include this layer.",
+  "@context": {
+    "@version": 1.1,
+    "gs1": "https://ref.gs1.org/voc/",
+    "oec": "https://ref.openepcis.org/extensions/common/core/",
+    "oea": "https://ref.openepcis.org/extensions/common/assessment/",
+    "schema": "https://schema.org/",
+    "cv": "http://data.europa.eu/m8g/",
+    "cccev": "http://data.europa.eu/m8g/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "AccessLevel": "oec:AccessLevel",
+    "AccessRights": "oec:AccessRights",
+    "ActorRole": "oec:ActorRole",
+    "Assessment": "oea:Assessment",
+    "AssessmentCondition": "oea:AssessmentCondition",
+    "AssessmentMethod": "oea:AssessmentMethod",
+    "AssessmentResult": "oea:AssessmentResult",
+    "AssessmentStandard": "oea:AssessmentStandard",
+    "BatchLevel": "oec:BatchLevel",
+    "Biodegradability": "oec:Biodegradability",
+    "BiodegradabilityTestMethod": "oec:BiodegradabilityTestMethod",
+    "CarbonFootprintDeclaration": "oec:CarbonFootprintDeclaration",
+    "CircularityInfo": "oec:CircularityPerformance",
+    "CircularityPerformance": "oec:CircularityPerformance",
+    "CommonSpecification": "oec:CommonSpecification",
+    "ComparisonOperator": "oea:ComparisonOperator",
+    "Compostability": "oec:Compostability",
+    "CompostabilityType": "oec:CompostabilityType",
+    "ConditionType": "oea:ConditionType",
+    "ConformityAssessmentModule": "oec:ConformityAssessmentModule",
+    "Criterion": "oea:Criterion",
+    "CriterionResult": "oea:CriterionResult",
+    "CustomsCommodityCodeType": "oec:CustomsCommodityCodeType",
+    "DPPGranularity": "oec:DPPGranularity",
+    "DataElement": "oec:DataElement",
+    "DataElementCollection": "oec:DataElementCollection",
+    "DepositReturnScheme": "oec:DepositReturnScheme",
+    "DigitalProductPassport": "oec:DigitalProductPassport",
+    "DocumentReference": {
+      "@id": "oec:DocumentReference",
+      "@context": {
+        "resourceTitle": {
+          "@id": "schema:name"
+        },
+        "contentType": {
+          "@id": "oec:mimeType"
+        },
+        "url": {
+          "@id": "oec:documentUrl",
+          "@type": "@id"
+        },
+        "language": {
+          "@id": "oec:languageCode"
+        },
+        "documentType": {
+          "@id": "oec:hasDocumentType",
+          "@type": "@vocab",
+          "@context": {
+            "Certificate": "oec:Certificate",
+            "DeclarationOfConformity": "oec:DeclarationOfConformity",
+            "DueDiligenceDocument": "oec:DueDiligenceDocument",
+            "EnvironmentalReport": "oec:EnvironmentalReport",
+            "Manual": "oec:Manual",
+            "SafetyDataSheet": "oec:SafetyDataSheet",
+            "TestReport": "oec:TestReport",
+            "ThirdPartyVerification": "oec:ThirdPartyVerification"
+          }
+        },
+        "issueDate": {
+          "@id": "oec:issueDate",
+          "@type": "xsd:date"
+        }
+      }
+    },
+    "DocumentType": "oec:DocumentType",
+    "DueDiligenceReport": "oec:DueDiligenceReport",
+    "EmissionsPerformance": "oec:EmissionsPerformance",
+    "EndOfLifeProgram": "oec:EndOfLifeProgram",
+    "EnergyEfficiency": "oec:EnergyEfficiency",
+    "EnergyEfficiencyClass": "oec:EnergyEfficiencyClass",
+    "EnvironmentalProductDeclaration": "oec:EnvironmentalProductDeclaration",
+    "Evidence": {
+      "@id": "cccev:Evidence"
+    },
+    "ExtendedProducerResponsibility": "oec:ExtendedProducerResponsibility",
+    "FacilityInformation": "oec:FacilityInformation",
+    "GranularityLevel": "oec:GranularityLevel",
+    "HarmonisedStandard": "oec:HarmonisedStandard",
+    "HazardClass": "oec:HazardClass",
+    "HazardSignalWord": "oec:HazardSignalWord",
+    "HazardousSubstance": "oec:HazardousSubstance",
+    "ImageObject": {
+      "@id": "schema:ImageObject"
+    },
+    "ImpactIndicatorResult": "oec:ImpactIndicatorResult",
+    "ImpactIndicatorType": "oec:ImpactIndicatorType",
+    "Indicator": "oea:Indicator",
+    "IndicatorKind": "oea:IndicatorKind",
+    "IndividualTradeItemPiece": "oec:IndividualTradeItemPiece",
+    "ItemLevel": "oec:ItemLevel",
+    "Latitude": "gs1:latitude",
+    "LifecycleStage": "oec:LifecycleStage",
+    "LifecycleStageResult": "oec:LifecycleStageResult",
+    "Longitude": "gs1:longitude",
+    "MaterialComposition": "oec:MaterialComposition",
+    "MeasurementParameter": "oea:MeasurementParameter",
+    "MeasurementResult": "oea:MeasurementResult",
+    "ModelLevel": "oec:ModelLevel",
+    "MultiLanguageDataElement": "oec:MultiLanguageDataElement",
+    "MultiLanguageValue": "oec:MultiLanguageValue",
+    "MultiValuedDataElement": "oec:MultiValuedDataElement",
+    "OperationalScope": "oec:OperationalScope",
+    "OperatorInformation": "oec:OperatorInformation",
+    "OperatorRole": "oec:OperatorRole",
+    "Outcome": "oea:Outcome",
+    "ParameterSetting": "oea:ParameterSetting",
+    "PassportStatus": "oec:PassportStatus",
+    "PerformanceInfo": "oec:PerformanceInfo",
+    "PerformanceParameter": "oea:PerformanceParameter",
+    "ProductCategory": "oec:ProductCategory",
+    "RecyclabilityAssessment": "oec:RecyclabilityAssessment",
+    "RecycledContent": "oec:RecycledContent",
+    "RepairProvider": "oec:RepairProvider",
+    "RepairabilityInfo": "oec:RepairabilityInfo",
+    "SingleValuedDataElement": "oec:SingleValuedDataElement",
+    "SubstanceOfConcern": "oec:SubstanceOfConcern",
+    "Temperature": "gs1:Temperature",
+    "TestExecution": "oea:TestExecution",
+    "TestMethod": "oea:TestMethod",
+    "Threshold": "oea:Threshold",
+    "TraceabilityPerformance": "oec:TraceabilityPerformance",
+    "UnionHarmonisationLegislation": "oec:UnionHarmonisationLegislation",
+    "_comment": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_architecture": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_classification": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_composition": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_environmental_footprint": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_gs1_alignment": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_gs1us_mapping": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_itip_ai8026": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_recyclability": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_recycled_content_structured": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_robustness": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_soc": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_spareparts": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_comment_textileMaterial": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_notes": {
+      "@id": "rdfs:comment",
+      "@container": "@set"
+    },
+    "_scenario": "rdfs:comment",
+    "activityClassification": {
+      "@id": "oec:activityClassification",
+      "@type": "xsd:string"
+    },
+    "additionalProductClassificationSystemCode": "gs1:additionalProductClassificationCode",
+    "alternateName": "schema:alternateName",
+    "assessmentDate": {
+      "@id": "oea:assessmentDate",
+      "@type": "xsd:date"
+    },
+    "assignedELI": {
+      "@id": "oec:assignedELI",
+      "@type": "xsd:anyURI"
+    },
+    "authorizedParties": {
+      "@id": "oec:hasAuthorizedParties",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "awardedScore": {
+      "@id": "oea:awardedScore",
+      "@type": "xsd:decimal"
+    },
+    "bioBasedFraction": {
+      "@id": "oec:bioBasedFraction",
+      "@type": "xsd:decimal"
+    },
+    "biodegradability": {
+      "@id": "oec:hasBiodegradability",
+      "@type": "@id"
+    },
+    "calculationDescription": {
+      "@id": "oea:calculationDescription",
+      "@type": "xsd:string"
+    },
+    "caption": "schema:caption",
+    "carbonFootprintMethodology": {
+      "@id": "oec:carbonFootprintMethodology",
+      "@type": "xsd:anyURI"
+    },
+    "carbonFootprintStudyUrl": {
+      "@id": "oec:carbonFootprintStudyUrl",
+      "@type": "@id"
+    },
+    "carbonFootprintTotal": {
+      "@id": "oec:carbonFootprintTotal",
+      "@type": "xsd:decimal"
+    },
+    "casNumber": {
+      "@id": "oec:casNumber",
+      "@type": "xsd:string"
+    },
+    "collectionPointDirectoryUrl": {
+      "@id": "oec:collectionPointDirectoryUrl",
+      "@type": "xsd:anyURI"
+    },
+    "combinedNomenclatureCode": {
+      "@id": "oec:combinedNomenclatureCode",
+      "@type": "xsd:string"
+    },
+    "complianceDate": {
+      "@id": "oec:complianceDate",
+      "@type": "xsd:date"
+    },
+    "complianceStatus": {
+      "@id": "oec:complianceStatus",
+      "@type": "xsd:boolean"
+    },
+    "componentIdentifier": {
+      "@id": "oec:componentIdentifier",
+      "@type": "xsd:string"
+    },
+    "componentName": {
+      "@id": "oec:componentName",
+      "@type": "xsd:string"
+    },
+    "compostability": {
+      "@id": "oec:hasCompostability",
+      "@type": "@id"
+    },
+    "compostabilityStandard": {
+      "@id": "oec:compostabilityStandard",
+      "@type": "xsd:anyURI"
+    },
+    "concentration": {
+      "@id": "oec:concentration",
+      "@type": "xsd:decimal"
+    },
+    "conditionDescription": {
+      "@id": "oea:conditionDescription",
+      "@type": "xsd:string"
+    },
+    "contentDescription": "schema:description",
+    "contentSpecificationId": {
+      "@id": "oec:contentSpecificationId",
+      "@type": "xsd:anyURI"
+    },
+    "contentSpecificationIds": {
+      "@id": "oec:contentSpecificationId",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "contentUrl": "schema:contentUrl",
+    "criterionDescription": {
+      "@id": "oea:criterionDescription",
+      "@type": "xsd:string"
+    },
+    "crmListVersion": {
+      "@id": "oec:crmListVersion",
+      "@type": "xsd:string"
+    },
+    "customsCommodityCode": {
+      "@id": "oec:customsCommodityCode",
+      "@type": "xsd:string"
+    },
+    "dataElement": {
+      "@id": "oec:hasDataElement",
+      "@container": "@set"
+    },
+    "dataProviderCertification": {
+      "@id": "oec:dataProviderCertification",
+      "@type": "xsd:string"
+    },
+    "dataQualityAssessment": {
+      "@id": "oec:dataQualityAssessment",
+      "@type": "xsd:string"
+    },
+    "declaredUnit": {
+      "@id": "oec:declaredUnit",
+      "@type": "xsd:string"
+    },
+    "depositRedemptionChannelUrl": {
+      "@id": "oec:depositRedemptionChannelUrl",
+      "@type": "xsd:anyURI"
+    },
+    "dictionaryReference": {
+      "@id": "oec:dictionaryReference",
+      "@type": "@id"
+    },
+    "did": {
+      "@id": "oec:did",
+      "@type": "@id"
+    },
+    "digitalProductPassportId": {
+      "@id": "oec:passportIdentifier",
+      "@type": "@id"
+    },
+    "dismantlingGuideUrl": {
+      "@id": "oec:dismantlingGuideUrl",
+      "@type": "xsd:anyURI"
+    },
+    "diyRepairPossible": {
+      "@id": "oec:diyRepairPossible",
+      "@type": "xsd:boolean"
+    },
+    "documentTitle": "schema:name",
+    "documentUrl": {
+      "@id": "oec:documentUrl",
+      "@type": "@id"
+    },
+    "documents": {
+      "@id": "oec:hasDocuments",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "dppSchemaVersion": {
+      "@id": "oec:dppSchemaVersion",
+      "@type": "xsd:string"
+    },
+    "dppStatus": {
+      "@id": "oec:passportStatus"
+    },
+    "ecNumber": {
+      "@id": "oec:ecNumber",
+      "@type": "xsd:string"
+    },
+    "economicOperatorId": {
+      "@id": "oec:economicOperatorId",
+      "@type": "xsd:string"
+    },
+    "elementId": {
+      "@id": "oec:elementId",
+      "@type": "xsd:string"
+    },
+    "encodingFormat": "schema:encodingFormat",
+    "endOfLifeInstructions": {
+      "@id": "oec:endOfLifeInstructions",
+      "@type": "@id"
+    },
+    "energyEfficiencyClass": {
+      "@id": "oec:hasEnergyEfficiencyClass",
+      "@type": "@vocab",
+      "@context": {
+        "A": "oec:EnergyClassA",
+        "B": "oec:EnergyClassB",
+        "C": "oec:EnergyClassC",
+        "D": "oec:EnergyClassD",
+        "E": "oec:EnergyClassE",
+        "F": "oec:EnergyClassF",
+        "G": "oec:EnergyClassG",
+        "EnergyClassA": "oec:EnergyClassA",
+        "EnergyClassB": "oec:EnergyClassB",
+        "EnergyClassC": "oec:EnergyClassC",
+        "EnergyClassD": "oec:EnergyClassD",
+        "EnergyClassE": "oec:EnergyClassE",
+        "EnergyClassF": "oec:EnergyClassF",
+        "EnergyClassG": "oec:EnergyClassG"
+      }
+    },
+    "eoriNumber": {
+      "@id": "oec:eoriNumber",
+      "@type": "xsd:string"
+    },
+    "epdProgramOperator": {
+      "@id": "oec:epdProgramOperator",
+      "@type": "xsd:string"
+    },
+    "epdRegistrationNumber": {
+      "@id": "oec:epdRegistrationNumber",
+      "@type": "xsd:string"
+    },
+    "epdStandard": {
+      "@id": "oec:epdStandard",
+      "@type": "xsd:string"
+    },
+    "epdValidUntil": {
+      "@id": "oec:epdValidUntil",
+      "@type": "xsd:date"
+    },
+    "eprComplianceUrl": {
+      "@id": "oec:eprComplianceUrl",
+      "@type": "xsd:anyURI"
+    },
+    "eprRegistrationNumber": {
+      "@id": "oec:eprRegistrationNumber",
+      "@type": "xsd:string"
+    },
+    "eprWasteStream": {
+      "@id": "oec:eprWasteStream",
+      "@type": "xsd:string"
+    },
+    "eprelProductUrl": {
+      "@id": "oec:eprelProductUrl",
+      "@type": "xsd:anyURI"
+    },
+    "eprelRegistrationNumber": {
+      "@id": "oec:eprelRegistrationNumber",
+      "@type": "xsd:string"
+    },
+    "extendedProducerResponsibility": {
+      "@id": "oec:hasExtendedProducerResponsibility",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "facilityCertifications": {
+      "@id": "oec:hasFacilityCertifications",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "facilityId": {
+      "@id": "oec:facilityId",
+      "@type": "xsd:string"
+    },
+    "facilityType": {
+      "@id": "oec:facilityType",
+      "@type": "xsd:string"
+    },
+    "forcedLabourFreeAssertion": {
+      "@id": "oec:forcedLabourFreeAssertion",
+      "@type": "xsd:boolean"
+    },
+    "gln": "gs1:globalLocationNumber",
+    "granularity": {
+      "@id": "oec:granularityLevel"
+    },
+    "granularityLevel": {
+      "@id": "oec:granularityLevel",
+      "@type": "xsd:string"
+    },
+    "hasAccessLevel": {
+      "@id": "oec:hasAccessLevel",
+      "@type": "@vocab",
+      "@context": {
+        "AuthorizedOnly": "oec:AuthorizedOnly",
+        "Public": "oec:Public",
+        "Restricted": "oec:Restricted"
+      }
+    },
+    "hasAccessRights": {
+      "@id": "oec:hasAccessRights",
+      "@type": "@id"
+    },
+    "hasAnnualEnergyConsumption": {
+      "@id": "oec:hasAnnualEnergyConsumption",
+      "@type": "@id"
+    },
+    "hasAssessedParameter": {
+      "@id": "oea:hasAssessedParameter",
+      "@type": "@id"
+    },
+    "hasAssessment": {
+      "@id": "oea:hasAssessment",
+      "@type": "@id"
+    },
+    "hasAssessmentBody": {
+      "@id": "oea:hasAssessmentBody",
+      "@type": "@id"
+    },
+    "hasAuthorizedParties": {
+      "@id": "oec:hasAuthorizedParties",
+      "@type": "@id"
+    },
+    "hasBackupCopyHost": {
+      "@id": "oec:hasBackupCopyHost",
+      "@type": "@id"
+    },
+    "hasBiodegradability": {
+      "@id": "oec:hasBiodegradability",
+      "@type": "@id"
+    },
+    "hasCarbonFootprint": {
+      "@id": "oec:hasCarbonFootprint",
+      "@type": "@id"
+    },
+    "hasCarbonFootprintDeclaration": {
+      "@id": "oec:hasCarbonFootprintDeclaration",
+      "@type": "@id"
+    },
+    "hasCarbonFootprintDistribution": {
+      "@id": "oec:hasCarbonFootprintDistribution",
+      "@type": "@id"
+    },
+    "hasCarbonFootprintEndOfLife": {
+      "@id": "oec:hasCarbonFootprintEndOfLife",
+      "@type": "@id"
+    },
+    "hasCarbonFootprintProduction": {
+      "@id": "oec:hasCarbonFootprintProduction",
+      "@type": "@id"
+    },
+    "hasCarbonFootprintRawMaterial": {
+      "@id": "oec:hasCarbonFootprintRawMaterial",
+      "@type": "@id"
+    },
+    "hasCarbonFootprintUse": {
+      "@id": "oec:hasCarbonFootprintUse",
+      "@type": "@id"
+    },
+    "hasCategoricalValue": {
+      "@id": "oea:hasCategoricalValue",
+      "@type": "@id"
+    },
+    "hasCircularityPerformance": {
+      "@id": "oec:hasCircularityPerformance",
+      "@type": "@id"
+    },
+    "hasComparisonOperator": {
+      "@id": "oea:hasComparisonOperator",
+      "@type": "@vocab",
+      "@context": {
+        "Equal": "oea:Equal",
+        "GreaterThan": "oea:GreaterThan",
+        "GreaterThanOrEqual": "oea:GreaterThanOrEqual",
+        "LessThan": "oea:LessThan",
+        "LessThanOrEqual": "oea:LessThanOrEqual"
+      }
+    },
+    "hasCompostability": {
+      "@id": "oec:hasCompostability",
+      "@type": "@id"
+    },
+    "hasCompostabilityType": {
+      "@id": "oec:hasCompostabilityType",
+      "@type": "@vocab",
+      "@context": {
+        "HomeCompostable": "oec:HomeCompostable",
+        "IndustrialCompostable": "oec:IndustrialCompostable",
+        "NotCompostable": "oec:NotCompostable"
+      }
+    },
+    "hasCondition": {
+      "@id": "oea:hasCondition",
+      "@type": "@id"
+    },
+    "hasConditionConcept": {
+      "@id": "oea:hasConditionConcept",
+      "@type": "@id"
+    },
+    "hasConditionType": {
+      "@id": "oea:hasConditionType",
+      "@type": "@id"
+    },
+    "hasConditionValue": {
+      "@id": "oea:hasConditionValue",
+      "@type": "@id"
+    },
+    "hasConformityDeclaration": {
+      "@id": "oec:hasConformityDeclaration",
+      "@type": "@id"
+    },
+    "hasCriterion": {
+      "@id": "oea:hasCriterion",
+      "@type": "@id"
+    },
+    "hasCustomsCommodityCodeType": {
+      "@id": "oec:hasCustomsCommodityCodeType",
+      "@type": "@vocab",
+      "@context": {
+        "CN10": "oec:CN10",
+        "CN8": "oec:CN8",
+        "HS6": "oec:HS6",
+        "HS8": "oec:HS8",
+        "HTSUS10": "oec:HTSUS10"
+      }
+    },
+    "hasDataElement": {
+      "@id": "oec:hasDataElement",
+      "@type": "@id"
+    },
+    "hasDataRetentionPeriod": {
+      "@id": "oec:hasDataRetentionPeriod",
+      "@type": "@id"
+    },
+    "hasDepositAmount": {
+      "@id": "oec:hasDepositAmount",
+      "@type": "@id"
+    },
+    "hasDepositReturnScheme": {
+      "@id": "oec:hasDepositReturnScheme",
+      "@type": "@id"
+    },
+    "hasDepositSchemeOperator": {
+      "@id": "oec:hasDepositSchemeOperator",
+      "@type": "@id"
+    },
+    "hasDerivationMethod": {
+      "@id": "oea:hasDerivationMethod",
+      "@type": "@id"
+    },
+    "hasDismantlingInstructions": {
+      "@id": "oec:hasDismantlingInstructions",
+      "@type": "@id"
+    },
+    "hasDocumentType": {
+      "@id": "oec:hasDocumentType",
+      "@type": "@vocab",
+      "@context": {
+        "Certificate": "oec:Certificate",
+        "DeclarationOfConformity": "oec:DeclarationOfConformity",
+        "DueDiligenceDocument": "oec:DueDiligenceDocument",
+        "EnvironmentalReport": "oec:EnvironmentalReport",
+        "Manual": "oec:Manual",
+        "SafetyDataSheet": "oec:SafetyDataSheet",
+        "TestReport": "oec:TestReport",
+        "ThirdPartyVerification": "oec:ThirdPartyVerification"
+      }
+    },
+    "hasDocuments": {
+      "@id": "oec:hasDocuments",
+      "@type": "@id"
+    },
+    "hasDueDiligenceRegulationContext": {
+      "@id": "oec:hasDueDiligenceRegulationContext",
+      "@type": "@id"
+    },
+    "hasDueDiligenceReport": {
+      "@id": "oec:hasDueDiligenceReport",
+      "@type": "@id"
+    },
+    "hasEmissionsPerformance": {
+      "@id": "oec:hasEmissionsPerformance",
+      "@type": "@id"
+    },
+    "hasEndOfLifeProgram": {
+      "@id": "oec:hasEndOfLifeProgram",
+      "@type": "@id"
+    },
+    "hasEnergyEfficiency": {
+      "@id": "oec:hasEnergyEfficiency",
+      "@type": "@id"
+    },
+    "hasEnergyEfficiencyClass": {
+      "@id": "oec:hasEnergyEfficiencyClass",
+      "@type": "@vocab",
+      "@context": {
+        "EnergyClassA": "oec:EnergyClassA",
+        "EnergyClassB": "oec:EnergyClassB",
+        "EnergyClassC": "oec:EnergyClassC",
+        "EnergyClassD": "oec:EnergyClassD",
+        "EnergyClassE": "oec:EnergyClassE",
+        "EnergyClassF": "oec:EnergyClassF",
+        "EnergyClassG": "oec:EnergyClassG"
+      }
+    },
+    "hasEnvironmentalProductDeclaration": {
+      "@id": "oec:hasEnvironmentalProductDeclaration",
+      "@type": "@id"
+    },
+    "hasEprJurisdiction": {
+      "@id": "oec:hasEprJurisdiction",
+      "@type": "@id"
+    },
+    "hasEprScheme": {
+      "@id": "oec:hasEprScheme",
+      "@type": "@id"
+    },
+    "hasEvidence": {
+      "@id": "oea:hasEvidence",
+      "@type": "@id"
+    },
+    "hasExtendedProducerResponsibility": {
+      "@id": "oec:hasExtendedProducerResponsibility",
+      "@type": "@id"
+    },
+    "hasFacilityCertifications": {
+      "@id": "oec:hasFacilityCertifications",
+      "@type": "@id"
+    },
+    "hasFacilityInformation": {
+      "@id": "oec:hasFacilityInformation",
+      "@type": "@id"
+    },
+    "hasGuaranteedLifespan": {
+      "@id": "oec:hasGuaranteedLifespan",
+      "@type": "@id"
+    },
+    "hasHazardClass": {
+      "@id": "oec:hasHazardClass",
+      "@type": "@vocab",
+      "@context": {
+        "AcuteToxicity": "oec:AcuteToxicity",
+        "AspirationHazard": "oec:AspirationHazard",
+        "Carcinogenicity": "oec:Carcinogenicity",
+        "EyeDamageOrIrritation": "oec:EyeDamageOrIrritation",
+        "GermCellMutagenicity": "oec:GermCellMutagenicity",
+        "HazardousToAquaticEnvironment": "oec:HazardousToAquaticEnvironment",
+        "ReproductiveToxicity": "oec:ReproductiveToxicity",
+        "RespiratoryOrSkinSensitization": "oec:RespiratoryOrSkinSensitization",
+        "SkinCorrosionOrIrritation": "oec:SkinCorrosionOrIrritation",
+        "SpecificTargetOrganToxicity": "oec:SpecificTargetOrganToxicity"
+      }
+    },
+    "hasHazardSignalWord": {
+      "@id": "oec:hasHazardSignalWord",
+      "@type": "@vocab",
+      "@context": {
+        "HazardDanger": "oec:HazardDanger",
+        "HazardWarning": "oec:HazardWarning"
+      }
+    },
+    "hasHazardousSubstances": {
+      "@id": "oec:hasHazardousSubstances",
+      "@type": "@id"
+    },
+    "hasImpactIndicator": {
+      "@id": "oec:hasImpactIndicator",
+      "@type": "@id"
+    },
+    "hasIndicator": {
+      "@id": "oea:hasIndicator",
+      "@type": "@id"
+    },
+    "hasIndicatorKind": {
+      "@id": "oea:hasIndicatorKind",
+      "@type": "@id"
+    },
+    "hasIndicatorValue": {
+      "@id": "oea:hasIndicatorValue",
+      "@type": "@id"
+    },
+    "hasLifecycleStage": {
+      "@id": "oec:hasLifecycleStage",
+      "@type": "@vocab",
+      "@context": {
+        "StageA1": "oec:StageA1",
+        "StageA2": "oec:StageA2",
+        "StageA3": "oec:StageA3",
+        "StageA4": "oec:StageA4",
+        "StageA5": "oec:StageA5",
+        "StageB1": "oec:StageB1",
+        "StageB2": "oec:StageB2",
+        "StageB3": "oec:StageB3",
+        "StageB4": "oec:StageB4",
+        "StageB5": "oec:StageB5",
+        "StageB6": "oec:StageB6",
+        "StageB7": "oec:StageB7",
+        "StageC1": "oec:StageC1",
+        "StageC2": "oec:StageC2",
+        "StageC3": "oec:StageC3",
+        "StageC4": "oec:StageC4",
+        "StageD": "oec:StageD"
+      }
+    },
+    "hasLifecycleStageResult": {
+      "@id": "oec:hasLifecycleStageResult",
+      "@type": "@id"
+    },
+    "hasMaterialComposition": {
+      "@id": "oec:hasMaterialComposition",
+      "@type": "@id"
+    },
+    "hasMaterialOrigin": {
+      "@id": "oec:hasMaterialOrigin",
+      "@type": "@id"
+    },
+    "hasMeasuredValue": {
+      "@id": "oea:hasMeasuredValue",
+      "@type": "@id"
+    },
+    "hasMethod": {
+      "@id": "oea:hasMethod",
+      "@type": "@id"
+    },
+    "hasMultiLanguageValue": {
+      "@id": "oec:hasMultiLanguageValue",
+      "@type": "@id"
+    },
+    "hasObservedParameter": {
+      "@id": "oea:hasObservedParameter",
+      "@type": "@id"
+    },
+    "hasOperationalScope": {
+      "@id": "oec:hasOperationalScope",
+      "@type": "@vocab",
+      "@context": {
+        "CradleToGate": "oec:CradleToGate",
+        "CradleToGrave": "oec:CradleToGrave"
+      }
+    },
+    "hasOperatorInformation": {
+      "@id": "oec:hasOperatorInformation",
+      "@type": "@id"
+    },
+    "hasOperatorRole": {
+      "@id": "oec:hasOperatorRole",
+      "@type": "@vocab",
+      "@context": {
+        "AuthorisedRepresentative": "oec:AuthorisedRepresentative",
+        "Dealer": "oec:Dealer",
+        "Distributor": "oec:Distributor",
+        "DownstreamOperator": "oec:DownstreamOperator",
+        "FulfilmentServiceProvider": "oec:FulfilmentServiceProvider",
+        "Importer": "oec:Importer",
+        "Manufacturer": "oec:Manufacturer",
+        "Operator": "oec:Operator",
+        "Processor": "oec:Processor",
+        "Producer": "oec:Producer",
+        "Trader": "oec:Trader"
+      }
+    },
+    "hasOutcome": {
+      "@id": "oea:hasOutcome",
+      "@type": "@vocab",
+      "@context": {
+        "NotApplicable": "oea:NotApplicable",
+        "NotAssessed": "oea:NotAssessed",
+        "NotSatisfied": "oea:NotSatisfied",
+        "PartlySatisfied": "oea:PartlySatisfied",
+        "Satisfied": "oea:Satisfied",
+        "Uncertain": "oea:Uncertain"
+      }
+    },
+    "hasParameter": {
+      "@id": "oea:hasParameter",
+      "@type": "@id"
+    },
+    "hasParameterSetting": {
+      "@id": "oea:hasParameterSetting",
+      "@type": "@id"
+    },
+    "hasParameterValue": {
+      "@id": "oea:hasParameterValue",
+      "@type": "@id"
+    },
+    "hasPassportIssuer": {
+      "@id": "oec:hasPassportIssuer",
+      "@type": "@id"
+    },
+    "hasPerformanceInfo": {
+      "@id": "oec:hasPerformanceInfo",
+      "@type": "@id"
+    },
+    "hasPowerConsumptionOff": {
+      "@id": "oec:hasPowerConsumptionOff",
+      "@type": "@id"
+    },
+    "hasPowerConsumptionOn": {
+      "@id": "oec:hasPowerConsumptionOn",
+      "@type": "@id"
+    },
+    "hasPowerConsumptionStandby": {
+      "@id": "oec:hasPowerConsumptionStandby",
+      "@type": "@id"
+    },
+    "hasProductCategory": {
+      "@id": "oec:hasProductCategory",
+      "@type": "@vocab",
+      "@context": {
+        "Aluminium": "oec:Aluminium",
+        "Batteries": "oec:Batteries",
+        "Chemicals": "oec:Chemicals",
+        "ConstructionProducts": "oec:ConstructionProducts",
+        "Detergents": "oec:Detergents",
+        "Electronics": "oec:Electronics",
+        "FoodContact": "oec:FoodContact",
+        "Furniture": "oec:Furniture",
+        "IronSteel": "oec:IronSteel",
+        "Packaging": "oec:Packaging",
+        "Textiles": "oec:Textiles",
+        "Tyres": "oec:Tyres"
+      }
+    },
+    "hasRecyclabilityAssessment": {
+      "@id": "oec:hasRecyclabilityAssessment",
+      "@type": "@id"
+    },
+    "hasRecycledContentDetails": {
+      "@id": "oec:hasRecycledContentDetails",
+      "@type": "@id"
+    },
+    "hasRenderedAccessLevel": {
+      "@id": "oec:hasRenderedAccessLevel",
+      "@type": "@vocab",
+      "@context": {
+        "AuthorizedOnly": "oec:AuthorizedOnly",
+        "Public": "oec:Public",
+        "Restricted": "oec:Restricted"
+      }
+    },
+    "hasRepairInstructions": {
+      "@id": "oec:hasRepairInstructions",
+      "@type": "@id"
+    },
+    "hasRepairProvider": {
+      "@id": "oec:hasRepairProvider",
+      "@type": "@id"
+    },
+    "hasRepairabilityInfo": {
+      "@id": "oec:hasRepairabilityInfo",
+      "@type": "@id"
+    },
+    "hasReportingGranularity": {
+      "@id": "oec:hasReportingGranularity",
+      "@type": "@vocab",
+      "@context": {
+        "BatchLevel": "oec:BatchLevel",
+        "ItemLevel": "oec:ItemLevel",
+        "ModelLevel": "oec:ModelLevel"
+      }
+    },
+    "hasResult": {
+      "@id": "oea:hasResult",
+      "@type": "@id"
+    },
+    "hasSoftwareUpdatesAvailability": {
+      "@id": "oec:hasSoftwareUpdatesAvailability",
+      "@type": "@id"
+    },
+    "hasSparePartsAvailability": {
+      "@id": "oec:hasSparePartsAvailability",
+      "@type": "@id"
+    },
+    "hasSubAssessment": {
+      "@id": "oea:hasSubAssessment",
+      "@type": "@id"
+    },
+    "hasSubstancesOfConcern": {
+      "@id": "oec:hasSubstancesOfConcern",
+      "@type": "@id"
+    },
+    "hasThresholdParameter": {
+      "@id": "oea:hasThresholdParameter",
+      "@type": "@id"
+    },
+    "hasThresholdValue": {
+      "@id": "oea:hasThresholdValue",
+      "@type": "@id"
+    },
+    "hasTraceabilityPerformance": {
+      "@id": "oec:hasTraceabilityPerformance",
+      "@type": "@id"
+    },
+    "hasTradeItemPieces": {
+      "@id": "oec:hasTradeItemPieces",
+      "@type": "@id"
+    },
+    "hasVerificationBody": {
+      "@id": "oec:hasVerificationBody",
+      "@type": "@id"
+    },
+    "hazardImpact": "oec:hazardImpact",
+    "hazardPictogramCode": {
+      "@id": "oec:hazardPictogramCode",
+      "@container": "@set"
+    },
+    "hazardSignalWord": {
+      "@id": "oec:hasHazardSignalWord",
+      "@type": "@vocab",
+      "@context": {
+        "Danger": "oec:HazardDanger",
+        "Warning": "oec:HazardWarning",
+        "HazardDanger": "oec:HazardDanger",
+        "HazardWarning": "oec:HazardWarning"
+      }
+    },
+    "hazardStatement": {
+      "@id": "oec:hazardStatement",
+      "@container": "@set"
+    },
+    "hazardousSubstances": {
+      "@id": "oec:hasHazardousSubstances",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "identifier": "@id",
+    "identityCredentialUrl": {
+      "@id": "oec:identityCredentialUrl",
+      "@type": "@id"
+    },
+    "image": "schema:image",
+    "indicatorText": {
+      "@id": "oea:indicatorText",
+      "@type": "xsd:string"
+    },
+    "isCriticalRawMaterial": {
+      "@id": "oec:isCriticalRawMaterial",
+      "@type": "xsd:boolean"
+    },
+    "isDefinedByStandard": {
+      "@id": "oea:isDefinedByStandard",
+      "@type": "@id"
+    },
+    "isDerivedFrom": {
+      "@id": "oea:isDerivedFrom",
+      "@type": "@id"
+    },
+    "isEnergyRelated": {
+      "@id": "oec:isEnergyRelated",
+      "@type": "xsd:boolean"
+    },
+    "isEvaluatedAgainst": {
+      "@id": "oea:isEvaluatedAgainst",
+      "@type": "@id"
+    },
+    "isStrategicRawMaterial": {
+      "@id": "oec:isStrategicRawMaterial",
+      "@type": "xsd:boolean"
+    },
+    "issueDate": {
+      "@id": "oec:issueDate",
+      "@type": "xsd:date"
+    },
+    "iupacName": {
+      "@id": "oec:iupacName",
+      "@type": "xsd:string"
+    },
+    "language": {
+      "@id": "oec:language",
+      "@type": "xsd:string"
+    },
+    "languageCode": {
+      "@id": "oec:languageCode",
+      "@type": "xsd:string"
+    },
+    "lastUpdated": {
+      "@id": "oec:lastUpdated",
+      "@type": "xsd:dateTime"
+    },
+    "manufacturingDate": {
+      "@id": "gs1:productionDate",
+      "@type": "xsd:date"
+    },
+    "massFraction": {
+      "@id": "oec:massFraction",
+      "@type": "xsd:decimal"
+    },
+    "materialComposition": {
+      "@id": "oec:hasMaterialComposition",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "materialName": "schema:name",
+    "maxScore": {
+      "@id": "oea:maxScore",
+      "@type": "xsd:decimal"
+    },
+    "methodName": {
+      "@id": "oea:methodName",
+      "@type": "xsd:string"
+    },
+    "methodUrl": {
+      "@id": "oea:methodUrl",
+      "@type": "xsd:anyURI"
+    },
+    "mimeType": {
+      "@id": "oec:mimeType",
+      "@type": "xsd:string"
+    },
+    "model": "schema:model",
+    "multiLanguageValue": {
+      "@id": "oec:hasMultiLanguageValue",
+      "@container": "@set"
+    },
+    "name": "schema:name",
+    "passportExpiryDate": {
+      "@id": "oec:passportExpiryDate",
+      "@type": "xsd:date"
+    },
+    "passportIdentifier": {
+      "@id": "oec:passportIdentifier",
+      "@type": "xsd:anyURI"
+    },
+    "passportIssueDate": {
+      "@id": "oec:passportIssueDate",
+      "@type": "xsd:date"
+    },
+    "passportStatus": {
+      "@id": "oec:passportStatus",
+      "@type": "xsd:string"
+    },
+    "passportVersion": {
+      "@id": "oec:passportVersion",
+      "@type": "xsd:string"
+    },
+    "postConsumerRecycledContent": {
+      "@id": "oec:postConsumerRecycledContent",
+      "@type": "xsd:decimal"
+    },
+    "preConsumerRecycledContent": {
+      "@id": "oec:preConsumerRecycledContent",
+      "@type": "xsd:decimal"
+    },
+    "precautionaryStatement": {
+      "@id": "oec:precautionaryStatement",
+      "@container": "@set"
+    },
+    "previousPassportVersion": {
+      "@id": "oec:previousPassportVersion",
+      "@type": "@id"
+    },
+    "primarySourcedRatio": {
+      "@id": "oec:primarySourcedRatio",
+      "@type": "xsd:decimal"
+    },
+    "productCategoryRules": {
+      "@id": "oec:productCategoryRules",
+      "@type": "xsd:anyURI"
+    },
+    "productModel": "schema:ProductModel",
+    "professionalRepairNetwork": {
+      "@id": "oec:professionalRepairNetwork",
+      "@type": "@id"
+    },
+    "recycledContent": {
+      "@id": "oec:recycledContent",
+      "@type": "xsd:decimal"
+    },
+    "registrationNumber": {
+      "@id": "oec:registrationNumber",
+      "@type": "xsd:string"
+    },
+    "regulatoryActStatus": {
+      "@id": "oec:regulatoryActStatus",
+      "@type": "xsd:string"
+    },
+    "regulatoryPermitIdentification": {
+      "@id": "oec:regulatoryPermitIdentification",
+      "@type": "xsd:string"
+    },
+    "regulatoryReferenceApplicabilityEndDate": {
+      "@id": "gs1:regulatoryReferenceApplicabilityEndDate",
+      "@type": "xsd:date"
+    },
+    "regulatoryReferenceApplicabilityStartDate": {
+      "@id": "gs1:regulatoryReferenceApplicabilityStartDate",
+      "@type": "xsd:date"
+    },
+    "remanufacturingDate": {
+      "@id": "oec:remanufacturingDate",
+      "@type": "xsd:dateTime"
+    },
+    "repairInformationPortalUrl": {
+      "@id": "oec:repairInformationPortalUrl",
+      "@type": "xsd:anyURI"
+    },
+    "repairProvider": {
+      "@id": "oec:hasRepairProvider",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "repairProviderName": {
+      "@id": "oec:repairProviderName",
+      "@type": "xsd:string"
+    },
+    "repairProviderUrl": {
+      "@id": "oec:repairProviderUrl",
+      "@type": "xsd:anyURI"
+    },
+    "reportDate": {
+      "@id": "oec:reportDate",
+      "@type": "xsd:date"
+    },
+    "reportUrl": {
+      "@id": "oec:reportUrl",
+      "@type": "@id"
+    },
+    "resultText": {
+      "@id": "oea:resultText",
+      "@type": "xsd:string"
+    },
+    "safeDisassemblyInstructions": {
+      "@id": "oec:safeDisassemblyInstructions",
+      "@type": "xsd:string"
+    },
+    "safeUseInstructions": {
+      "@id": "oec:safeUseInstructions",
+      "@type": "xsd:string"
+    },
+    "schemaVersion": "schema:schemaVersion",
+    "scipId": {
+      "@id": "oec:scipId",
+      "@type": "xsd:string"
+    },
+    "separateCollectionInfo": {
+      "@id": "oec:separateCollectionInfo",
+      "@type": "@id"
+    },
+    "serialNumber": "schema:serialNumber",
+    "socThreshold": {
+      "@id": "oec:socThreshold",
+      "@type": "xsd:decimal"
+    },
+    "sourceCountry": "gs1:countryOfOrigin",
+    "sparePartsDeliveryTime": {
+      "@id": "schema:deliveryTime",
+      "@type": "@id"
+    },
+    "standardCode": {
+      "@id": "oea:standardCode",
+      "@type": "xsd:string"
+    },
+    "standardUrl": {
+      "@id": "oea:standardUrl",
+      "@type": "xsd:anyURI"
+    },
+    "status": {
+      "@id": "schema:status",
+      "@type": "@vocab",
+      "@context": {
+        "Draft": "oec:Draft",
+        "Active": "oec:Active",
+        "Inactive": "oec:Inactive",
+        "Withdrawn": "oec:Withdrawn",
+        "Archived": "oec:Archived",
+        "Invalid": "oec:Invalid",
+        "Suspended": "oec:Suspended"
+      }
+    },
+    "substanceLocation": {
+      "@id": "oec:substanceLocation",
+      "@type": "xsd:string"
+    },
+    "substanceName": "schema:name",
+    "substanceTradeName": {
+      "@id": "oec:substanceTradeName",
+      "@type": "xsd:string"
+    },
+    "substancesOfConcern": {
+      "@id": "oec:hasSubstancesOfConcern",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "supplyChainTransparencyUrl": {
+      "@id": "oec:supplyChainTransparencyUrl",
+      "@type": "xsd:anyURI"
+    },
+    "takeBackIncentive": "oec:takeBackIncentive",
+    "takeBackUrl": {
+      "@id": "oec:takeBackUrl",
+      "@type": "xsd:anyURI"
+    },
+    "thirdPartyAssurancesUrl": {
+      "@id": "oec:thirdPartyAssurancesUrl",
+      "@type": "@id"
+    },
+    "thumbnailUrl": "schema:thumbnailUrl",
+    "tradeItemPieceCount": {
+      "@id": "oec:tradeItemPieceCount",
+      "@type": "xsd:positiveInteger"
+    },
+    "tradeItemPieceDescription": {
+      "@id": "oec:tradeItemPieceDescription",
+      "@type": "xsd:string"
+    },
+    "tradeItemPieceNumber": {
+      "@id": "oec:tradeItemPieceNumber",
+      "@type": "xsd:positiveInteger"
+    },
+    "tradeItemPieceOf": {
+      "@id": "oec:tradeItemPieceOf",
+      "@type": "@id"
+    },
+    "tradeItemPieces": {
+      "@id": "oec:hasTradeItemPieces",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "uniqueProductIdentifier": {
+      "@id": "gs1:productID",
+      "@type": "@id"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "validUntil": {
+      "@id": "schema:validUntil",
+      "@type": "xsd:date"
+    },
+    "value": {
+      "@id": "gs1:value",
+      "@type": "xsd:decimal"
+    },
+    "valueDataType": {
+      "@id": "oec:valueDataType",
+      "@type": "xsd:string"
+    },
+    "vatIdentificationNumber": "schema:vatID",
+    "verifiedRatio": {
+      "@id": "oec:verifiedRatio",
+      "@type": "xsd:decimal"
+    },
+    "warrantyScope": "gs1:warrantyScopeDescription",
+    "wastePreventionInfo": {
+      "@id": "oec:wastePreventionInfo",
+      "@type": "@id"
+    }
+  }
+}

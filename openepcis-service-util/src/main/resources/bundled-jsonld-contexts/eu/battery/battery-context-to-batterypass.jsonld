@@ -1,0 +1,342 @@
+{
+  "_comment": "JSON-LD serialization of the older BatteryPass rendering (SAMM 1.2.x and longlist v1.3); the current BatteryPass-Ready data model 2.0.1 is batterypass-ready-2.0.1-context.jsonld. Keys are the published BatteryPass attribute names; each expands to the IRI of that attribute in its own namespace. One BatteryPass data model, referenced through two renderings. (1) bpsamm-* = the Battery Pass Consortium SAMM aspect models (github.com/batterypass/BatteryPassDataModel), real published versions 1.2.0 (Performance 1.2.1); these match the skos mappings in battery.ttl and are the canonical form. (2) bpr: = an OpenEPCIS-hosted reference namespace for the few GEFEG BatteryPass-Ready longlist v1.3 attributes with no SAMM equivalent (the DPP-information group #1-#4); GEFEG (thebatterypass.eu / batterypass-ready.gefeg.com) is the Consortium's publication and validation channel and publishes no RDF IRIs. There is no SAMM 1.3.0 and no SAMM DPPInformation submodel.",
+  "_direction": "This context does NOT translate eubat: IRIs into BatteryPass IRIs. A JSON-LD context maps a KEY to an IRI; it cannot redirect one IRI to another, which is what the previous revision attempted and why no processor could load it. To read an OpenEPCIS battery passport with BatteryPass keys, compact it with battery-context-batterypass-bridge.jsonld. To relate the two vocabularies as RDF, use the graded skos mappings carried in ontology/battery.ttl.",
+  "@context": {
+    "@version": 1.1,
+    "gs1": "https://ref.gs1.org/voc/",
+    "eubat": "https://ref.openepcis.org/extensions/eu/battery/",
+    "oec": "https://ref.openepcis.org/extensions/common/core/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "bpsamm-general": "urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#",
+    "bpsamm-perf": "urn:samm:io.BatteryPass.Performance:1.2.1#",
+    "bpsamm-carbon": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#",
+    "bpsamm-material": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#",
+    "bpsamm-circular": "urn:samm:io.BatteryPass.Circularity:1.2.0#",
+    "bpsamm-scdd": "urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#",
+    "bpr": "https://ref.openepcis.org/vocab/batterypass-ready/1.3#",
+    "DPPSchemaVersion": {
+      "@id": "bpr:DPPSchemaVersion"
+    },
+    "batteryStatus": {
+      "@id": "bpsamm-general:batteryStatus"
+    },
+    "DPPGranularity": {
+      "@id": "bpr:DPPGranularity"
+    },
+    "Date-timeOfLatestUpdateOfDPP": {
+      "@id": "bpr:Date-timeOfLatestUpdateOfDPP"
+    },
+    "batteryPassportIdentifier": {
+      "@id": "bpsamm-general:batteryPassportIdentifier"
+    },
+    "batteryModelIdentifier": {
+      "@id": "bpsamm-general:batteryModelIdentifier"
+    },
+    "batterySerialNumber": {
+      "@id": "bpsamm-general:batterySerialNumber"
+    },
+    "facilityIdentifier": {
+      "@id": "bpsamm-general:facilityIdentifier"
+    },
+    "economicOperatorIdentifier": {
+      "@id": "bpsamm-general:economicOperatorIdentifier"
+    },
+    "manufacturerIdentifier": {
+      "@id": "bpsamm-general:manufacturerIdentifier"
+    },
+    "manufacturerInformation": {
+      "@id": "bpsamm-general:manufacturerInformation"
+    },
+    "batteryCategory": {
+      "@id": "bpsamm-general:batteryCategory"
+    },
+    "manufacturingPlace": {
+      "@id": "bpsamm-general:manufacturingPlace"
+    },
+    "economicOperatorInformation": {
+      "@id": "bpsamm-general:economicOperatorInformation"
+    },
+    "leadRecycledShare": {
+      "@id": "bpsamm-circular:leadRecycledShare"
+    },
+    "puttingIntoService": {
+      "@id": "bpsamm-general:puttingIntoService"
+    },
+    "lmt": {
+      "@id": "bpsamm-general:lmt"
+    },
+    "ev": {
+      "@id": "bpsamm-general:ev"
+    },
+    "industrial": {
+      "@id": "bpsamm-general:industrial"
+    },
+    "stationary": {
+      "@id": "bpsamm-general:stationary"
+    },
+    "Original": {
+      "@id": "bpsamm-general:Original"
+    },
+    "Repurposed": {
+      "@id": "bpsamm-general:Repurposed"
+    },
+    "Reused": {
+      "@id": "bpsamm-general:Reused"
+    },
+    "Remanufactured": {
+      "@id": "bpsamm-general:Remanufactured"
+    },
+    "Waste": {
+      "@id": "bpsamm-general:Waste"
+    },
+    "ratedCapacity": {
+      "@id": "bpsamm-perf:ratedCapacity"
+    },
+    "ratedEnergy": {
+      "@id": "bpsamm-perf:ratedEnergy"
+    },
+    "nominalVoltage": {
+      "@id": "bpsamm-perf:nominalVoltage"
+    },
+    "minimumVoltage": {
+      "@id": "bpsamm-perf:minimumVoltage"
+    },
+    "maximumVoltage": {
+      "@id": "bpsamm-perf:maximumVoltage"
+    },
+    "ratedMaximumPower": {
+      "@id": "bpsamm-perf:ratedMaximumPower"
+    },
+    "expectedNumberOfCycles": {
+      "@id": "bpsamm-perf:expectedNumberOfCycles"
+    },
+    "initialSelfDischarge": {
+      "@id": "bpr:InitialSelf-dischargeRate"
+    },
+    "roundtripEfficiency": {
+      "@id": "bpsamm-perf:roundtripEfficiency"
+    },
+    "initialInternalResistance": {
+      "@id": "bpsamm-perf:initialInternalResistance"
+    },
+    "expectedLifetime": {
+      "@id": "bpsamm-perf:expectedLifetime"
+    },
+    "cRate": {
+      "@id": "bpsamm-perf:cRate"
+    },
+    "powerCapabilityRatio": {
+      "@id": "bpsamm-perf:powerCapabilityRatio"
+    },
+    "capacityThresholdForExhaustion": {
+      "@id": "bpsamm-perf:capacityThresholdForExhaustion"
+    },
+    "lifetimeReferenceTest": {
+      "@id": "bpr:Cycle-lifeReferenceTest"
+    },
+    "cRateLifeCycleTest": {
+      "@id": "bpr:C-rateOfRelevantCycle-lifeTest"
+    },
+    "temperatureRangeIdleState": {
+      "@id": "bpsamm-perf:temperatureRangeIdleState"
+    },
+    "roundTripEfficiencyAt50PercentCycleLife": {
+      "@id": "bpsamm-perf:roundTripEfficiencyAt50PercentCycleLife"
+    },
+    "originalPowerCapability": {
+      "@id": "bpsamm-perf:originalPowerCapability"
+    },
+    "remainingPowerCapability": {
+      "@id": "bpsamm-perf:remainingPowerCapability"
+    },
+    "energyThroughput": {
+      "@id": "bpsamm-perf:energyThroughput"
+    },
+    "capacityThroughput": {
+      "@id": "bpsamm-perf:capacityThroughput"
+    },
+    "numberOfFullCycles": {
+      "@id": "bpsamm-perf:numberOfFullCycles"
+    },
+    "stateOfCertifiedEnergy": {
+      "@id": "bpsamm-perf:stateOfCertifiedEnergy"
+    },
+    "capacityFade": {
+      "@id": "bpsamm-perf:capacityFade"
+    },
+    "remainingEnergy": {
+      "@id": "bpsamm-perf:remainingEnergy"
+    },
+    "remainingCapacity": {
+      "@id": "bpsamm-perf:remainingCapacity"
+    },
+    "stateOfCharge": {
+      "@id": "bpsamm-perf:stateOfCharge"
+    },
+    "internalResistanceIncrease": {
+      "@id": "bpsamm-perf:internalResistanceIncrease"
+    },
+    "evolutionOfSelfDischarge": {
+      "@id": "bpsamm-perf:evolutionOfSelfDischarge"
+    },
+    "currentSelfDischargingRate": {
+      "@id": "bpsamm-perf:currentSelfDischargingRate"
+    },
+    "remainingRoundTripEnergyEfficiency": {
+      "@id": "bpsamm-perf:remainingRoundTripEnergyEfficiency"
+    },
+    "roundTripEfficiencyFade": {
+      "@id": "bpsamm-perf:roundTripEfficiencyFade"
+    },
+    "powerFade": {
+      "@id": "bpsamm-perf:powerFade"
+    },
+    "batteryCarbonFootprint": {
+      "@id": "bpsamm-carbon:batteryCarbonFootprint"
+    },
+    "carbonFootprintPerLifecycleStage": {
+      "@id": "bpsamm-carbon:carbonFootprintPerLifecycleStage"
+    },
+    "carbonFootprintPerformanceClass": {
+      "@id": "bpsamm-carbon:carbonFootprintPerformanceClass"
+    },
+    "carbonFootprintStudy": {
+      "@id": "bpsamm-carbon:carbonFootprintStudy"
+    },
+    "absoluteCarbonFootprint": {
+      "@id": "bpsamm-carbon:absoluteCarbonFootprint"
+    },
+    "RawMaterialExtraction": {
+      "@id": "bpsamm-carbon:RawMaterialExtraction"
+    },
+    "MainProduction": {
+      "@id": "bpsamm-carbon:MainProduction"
+    },
+    "Distribution": {
+      "@id": "bpsamm-carbon:Distribution"
+    },
+    "Recycling": {
+      "@id": "bpsamm-carbon:Recycling"
+    },
+    "batteryChemistry": {
+      "@id": "bpsamm-material:batteryChemistry"
+    },
+    "hazardousSubstanceName": {
+      "@id": "bpsamm-material:hazardousSubstanceName"
+    },
+    "batteryMaterials": {
+      "@id": "bpsamm-material:batteryMaterials"
+    },
+    "batteryMaterialLocation": {
+      "@id": "bpsamm-material:batteryMaterialLocation"
+    },
+    "batteryMaterialIdentifier": {
+      "@id": "bpsamm-material:batteryMaterialIdentifier"
+    },
+    "batteryMaterialMass": {
+      "@id": "bpsamm-material:batteryMaterialMass"
+    },
+    "isCriticalRawMaterial": {
+      "@id": "bpsamm-material:isCriticalRawMaterial"
+    },
+    "hazardousSubstances": {
+      "@id": "bpsamm-material:hazardousSubstances"
+    },
+    "hazardousSubstanceClass": {
+      "@id": "bpsamm-material:hazardousSubstanceClass"
+    },
+    "hazardousSubstanceConcentration": {
+      "@id": "bpsamm-material:hazardousSubstanceConcentration"
+    },
+    "hazardousSubstanceImpact": {
+      "@id": "bpsamm-material:hazardousSubstanceImpact"
+    },
+    "hazardousSubstanceLocation": {
+      "@id": "bpsamm-material:hazardousSubstanceLocation"
+    },
+    "hazardousSubstanceIdentifier": {
+      "@id": "bpsamm-material:hazardousSubstanceIdentifier"
+    },
+    "Cathode": {
+      "@id": "bpsamm-material:Cathode"
+    },
+    "Anode": {
+      "@id": "bpsamm-material:Anode"
+    },
+    "Electrolyte": {
+      "@id": "bpsamm-material:Electrolyte"
+    },
+    "AcuteToxicity": {
+      "@id": "bpsamm-material:AcuteToxicity"
+    },
+    "SkinCorrosionOrIrritation": {
+      "@id": "bpsamm-material:SkinCorrosionOrIrritation"
+    },
+    "EyeDamageOrIrritation": {
+      "@id": "bpsamm-material:EyeDamageOrIrritation"
+    },
+    "dismantlingAndRemovalInformation": {
+      "@id": "bpsamm-circular:dismantlingAndRemovalInformation"
+    },
+    "documentType": {
+      "@id": "bpsamm-circular:documentType"
+    },
+    "documentURL": {
+      "@id": "bpsamm-circular:documentURL"
+    },
+    "mimeType": {
+      "@id": "bpsamm-circular:mimeType"
+    },
+    "BillOfMaterial": {
+      "@id": "bpsamm-circular:BillOfMaterial"
+    },
+    "Model3D": {
+      "@id": "bpsamm-circular:Model3D"
+    },
+    "DismantlingManual": {
+      "@id": "bpsamm-circular:DismantlingManual"
+    },
+    "RemovalManual": {
+      "@id": "bpsamm-circular:RemovalManual"
+    },
+    "OtherManual": {
+      "@id": "bpsamm-circular:OtherManual"
+    },
+    "Drawing": {
+      "@id": "bpsamm-circular:Drawing"
+    },
+    "sparePartSources": {
+      "@id": "bpsamm-circular:sparePartSources"
+    },
+    "recycledContent": {
+      "@id": "bpsamm-circular:recycledContent"
+    },
+    "renewableContent": {
+      "@id": "bpsamm-circular:renewableContent"
+    },
+    "safetyInstructions": {
+      "@id": "bpsamm-circular:safetyInstructions"
+    },
+    "extinguishingAgents": {
+      "@id": "bpsamm-circular:extinguishingAgents"
+    },
+    "wastePrevention": {
+      "@id": "bpsamm-circular:wastePrevention"
+    },
+    "separateCollection": {
+      "@id": "bpsamm-circular:separateCollection"
+    },
+    "informationOnCollection": {
+      "@id": "bpsamm-circular:informationOnCollection"
+    },
+    "supplyChainDueDiligenceReport": {
+      "@id": "bpsamm-scdd:supplyChainDueDiligenceReport"
+    },
+    "thirdPartyAussurances": {
+      "@id": "bpsamm-scdd:thirdPartyAussurances"
+    },
+    "supplyChainIndicies": {
+      "@id": "bpsamm-scdd:supplyChainIndicies"
+    }
+  }
+}

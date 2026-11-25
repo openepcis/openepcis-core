@@ -1,0 +1,41 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "untp": "https://vocabulary.uncefact.org/untp/",
+    "euelec": "https://ref.openepcis.org/extensions/eu/electronics/",
+    "oec": "https://ref.openepcis.org/extensions/common/core/",
+    "gs1": "https://ref.gs1.org/voc/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "linkedProduct": {
+      "@id": "euelec:hasComponentPassport",
+      "@type": "@id"
+    },
+    "Product": "gs1:Product",
+    "Party": "gs1:Organization",
+    "Facility": "oec:FacilityInformation",
+    "massFraction": {
+      "@id": "oec:massFraction",
+      "@type": "xsd:decimal"
+    },
+    "materialProvenance": {
+      "@id": "oec:hasMaterialComposition",
+      "@type": "@id"
+    },
+    "product": {
+      "@id": "gs1:product",
+      "@type": "@id"
+    },
+    "softwareSupportPeriod": {
+      "@id": "euelec:hasSecuritySupportYears",
+      "@type": "@id"
+    },
+    "securityUpdateEndDate": {
+      "@id": "euelec:securityUpdateEndDate",
+      "@type": "xsd:date"
+    },
+    "softwareUpdateEvent": {
+      "@id": "euelec:hasSoftwareUpdateEvent",
+      "@type": "@id"
+    }
+  }
+}
