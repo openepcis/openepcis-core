@@ -22,7 +22,7 @@
   <parent>
     <groupId>io.openepcis</groupId>
     <artifactId>openepcis-core</artifactId>
-    <version>999-SNAPSHOT</version>
+    <version>0.9.5</version>
   </parent>
   <artifactId>openepcis-custom-extension-service</artifactId>
   <name>OpenEPCIS Custom Extension Service</name>
