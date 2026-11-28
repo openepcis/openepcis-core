@@ -23,7 +23,7 @@
     <parent>
         <groupId>io.openepcis</groupId>
         <artifactId>openepcis-keyvalue-repository-parent</artifactId>
-        <version>999-SNAPSHOT</version>
+        <version>0.9.6</version>
     </parent>
 
     <artifactId>openepcis-keyvalue-repository</artifactId>
