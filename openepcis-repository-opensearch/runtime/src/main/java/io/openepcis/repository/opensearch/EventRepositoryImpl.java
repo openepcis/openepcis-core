@@ -113,6 +113,9 @@ public class EventRepositoryImpl implements EventRepository {
       final Map<String, EPCISEventES> written = new HashMap<>();
       final List<Integer> invalidIndexes = new ArrayList<>();
       final Set<String> errorMsgs = new HashSet<>();
+      // A failure that already reported why (a duplicate within the document, a second error
+      // declaration) needs no extra entry without a detail.
+      final int reportedBefore = invalidEventsInfo.size();
       // Generate the ES representation for each event and handle any exception that may occur
       // during the process
       for (EPCISEvent c : epcisEvents) {
@@ -184,7 +187,9 @@ public class EventRepositoryImpl implements EventRepository {
             return true;
           });
         }).onFailure().invoke(t -> {
-          invalidEventsInfo.add(new InvalidEPCISEventInfo("InvalidEPCException", "Translation failed", 400, ValidationMessageFormatter.format(errorMsgs), invalidIndexes));
+          if (invalidEventsInfo.size() == reportedBefore) {
+            invalidEventsInfo.add(new InvalidEPCISEventInfo("InvalidEPCException", "Translation failed", 400, ValidationMessageFormatter.format(errorMsgs), invalidIndexes));
+          }
           throw new PersistenceException(ERROR_WHILE_PERSISTING_EPCIS_DOCUMENT, t);
         });
       } else {

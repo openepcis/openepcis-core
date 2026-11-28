@@ -284,7 +284,8 @@ class EventReplayIT {
                     List.of(twice), invalid, false, "s1", ZonedDateTime.now(), capturedBy("acme"), "acme", List.of(), false)
                 .await()
                 .atMost(Duration.ofSeconds(30)));
-    assertTrue(invalid.stream().anyMatch(i -> i.getDetail().contains("Duplicate EPCIS Event")));
+    assertEquals(1, invalid.size(), "the duplicate is the one error, without an empty one beside it");
+    assertTrue(invalid.get(0).getDetail().contains("Duplicate EPCIS Event"));
   }
 
   @Test

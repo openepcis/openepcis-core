@@ -154,7 +154,9 @@ public class EPCISEventValidationService {
               // GS1 identifier failed only there, after the event had passed validation, and the
               // capture job then waited on an event that would never be stored. The same
               // conversion runs here, so such an event is refused like any invalid one.
-              final Optional<String> unconvertible = whyClassLevelIdentifiersFail(eventNode, contextAsMap);
+              final Optional<String> unconvertible =
+                  whyDigitalLinksFail(eventNode)
+                      .or(() -> whyClassLevelIdentifiersFail(eventNode, contextAsMap));
               if (unconvertible.isPresent()) {
                 log.error("Rejecting event: {} (captureID={}, eventIndex={})",
                     unconvertible.get(), captureID, eventIndex);
@@ -244,6 +246,38 @@ public class EPCISEventValidationService {
             invalidEPCISEventInfos ->
                 validateUserExtensions(
                     eventNode, invalidEPCISEventInfos, captureID, contextAsMap, eventIndex));
+  }
+
+  /** The fields that hold instance-level identifiers. */
+  private static final List<String> INSTANCE_LEVEL_FIELDS = List.of("epcList", "childEPCs", "parentID");
+
+  /**
+   * Why a GS1 Digital Link among the event's instance-level identifiers is invalid, if one is. A
+   * URI the translator does not take for a GS1 identifier belongs to another scheme and passes, as
+   * it does when stored. One it takes for a GS1 identifier and refuses, such as a GTIN of the
+   * wrong length, is refused here, like the same identifier as a URN.
+   */
+  static Optional<String> whyDigitalLinksFail(final com.fasterxml.jackson.databind.JsonNode eventNode) {
+    for (final String field : INSTANCE_LEVEL_FIELDS) {
+      final com.fasterxml.jackson.databind.JsonNode node = eventNode.path(field);
+      final Iterable<com.fasterxml.jackson.databind.JsonNode> values =
+          node.isArray() ? node : node.isTextual() ? List.of(node) : List.of();
+      for (final com.fasterxml.jackson.databind.JsonNode value : values) {
+        final String epc = value.asText("");
+        if (!epc.startsWith("http://") && !epc.startsWith("https://")) {
+          continue;
+        }
+        try {
+          io.openepcis.identifiers.converter.util.ConverterUtil.toURN(epc);
+        } catch (io.openepcis.core.exception.UnsupportedGS1IdentifierException e) {
+          // another identifier scheme
+        } catch (io.openepcis.core.exception.ValidationException e) {
+          return Optional.of(
+              field + " '" + epc + "' is not a valid GS1 Digital Link: " + e.getMessage());
+        }
+      }
+    }
+    return Optional.empty();
   }
 
   /** The quantity lists whose epcClass is converted to a class-level identifier when stored. */
